@@ -1,0 +1,13 @@
+{
+  "generator-backbone": {
+    "appPath": "app",
+    "appName": "Book",
+    "coffee": false,
+    "testFramework": "mocha",
+    "templateFramework": "lodash",
+    "compassBootstrap": false,
+    "includeRequireJS": true
+  },
+  "generator-mocha": {},
+  "generator-jasmine": {}
+}
