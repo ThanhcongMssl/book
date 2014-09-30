@@ -26,6 +26,7 @@ define (
             });
         },
 
+        //region Function
         render: function(){
             var template = this.template({
                 HTML: ViewModel.get('HTML')
@@ -40,41 +41,27 @@ define (
             return this;
         },
 
+        initComponents: function(){
+            this.resizeImage();
+            ViewModel.set('idPerPage', this.calculateIdPerPage());
+            facade.publish('Viewer:resize');
+        },
+
         bindEvents: function(){
             Events.addListener('resize', window, this.handleWindowResize, this);
         },
+        //endregion
 
+        //region Handle Events
         handleWindowResize : function(){
             this.initComponents();
             this.changeView({
                 ID: UserModel.get('currentID')
             });
         },
+        //endregion
 
-        initComponents: function(){
-            this.resizeImage();
-            ViewModel.set('idPerPage', this.calculateIdPerPage());
-        },
-
-        resizeImage : function(){
-            var percent = 86 / 100,
-                height = Math.floor(this.$el.height() * percent),
-                $img = this.$el.find('img');
-            for (var i = 0, length = $img.length; i < length; i++) {
-                this.$($img[i]).css('max-height', height);
-            }
-        },
-
-        calculateIdPerPage : function(){
-            var viewerHeight = this.$el.height(),
-                articleHeight = this.$('.article').height(),
-                idInPart = InfoModel.getIdInPart(UserModel.get('currentPart'));
-
-            viewerHeight *= this.$('.container').css('column-count');
-
-            return Math.floor((viewerHeight / articleHeight) * idInPart);
-        },
-
+        //region Method
         changeView : function(options){
             var id = options.ID,
                 part = InfoModel.getPartById(id);
@@ -82,6 +69,7 @@ define (
             if (part == UserModel.get('currentPart')){
                 var X = Math.floor((id - InfoModel.get('part')[part - 1]) / ViewModel.get('idPerPage'));
                 this.translate(X);
+                facade.publish('CheckIn');
             } else {
                 UserModel.set('currentPart', part);
                 facade.publish('Request:part', {
@@ -110,7 +98,27 @@ define (
                 "-ms-transform": "translate(" + translateX + "px,0px)",
                 "-webkit-transform": "translate(" + translateX + "px,0px)"
             });
+        },
+
+        resizeImage : function(){
+            var percent = 86 / 100,
+                height = Math.floor(this.$el.height() * percent),
+                $img = this.$el.find('img');
+            for (var i = 0, length = $img.length; i < length; i++) {
+                this.$($img[i]).css('max-height', height);
+            }
+        },
+
+        calculateIdPerPage : function(){
+            var viewerHeight = this.$el.height(),
+                articleHeight = this.$('.article').height(),
+                idInPart = InfoModel.getIdInPart(UserModel.get('currentPart'));
+
+            viewerHeight *= this.$('.container').css('column-count');
+
+            return Math.floor((viewerHeight / articleHeight) * idInPart);
         }
+        //endregion
     });
 
     return View;

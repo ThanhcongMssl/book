@@ -17,6 +17,9 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                         spyOn(Viewer.prototype, 'changeFontStyle').and.callThrough();
                         spyOn(Content.prototype, 'changeBackgroundColor').and.callThrough();
 
+                        spyOn(TextTool.prototype, 'initialize').and.callFake(function(options){
+                            this.render();
+                        });
                         spyOn(TextTool.prototype, 'handleIncreaseSizeClick').and.callThrough();
                         spyOn(TextTool.prototype, 'handleDecreaseSizeClick').and.callThrough();
                         spyOn(TextTool.prototype, 'handleFontStyleChange').and.callThrough();
@@ -27,14 +30,20 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                         this.textTool = new TextTool();
                     });
 
+                    it('Initialize function should be called', function(){
+                        expect(TextTool.prototype.initialize).toBeDefined();
+                        expect(TextTool.prototype.initialize).toHaveBeenCalled();
+                    });
+
                     it('Handler should be called when inscrease font click', function(){
+                        facade.publish.calls.reset();
                         this.textTool.$('.increase-size').click();
 
                         expect(TextTool.prototype.handleIncreaseSizeClick).toBeDefined();
                         expect(TextTool.prototype.handleIncreaseSizeClick).toHaveBeenCalled();
 
                         expect(facade.publish).toHaveBeenCalled();
-                        expect(facade.publish.calls.mostRecent().args).toEqual(
+                        expect(facade.publish.calls.argsFor(0)).toEqual(
                             ['Font:change-size', {size: jasmine.any(Number)}]
                         );
                         expect(Viewer.prototype.changeFontSize).toBeDefined();
@@ -44,13 +53,14 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                     });
 
                     it('Handler should be called when descrease font click', function(){
+                        facade.publish.calls.reset();
                         this.textTool.$('.decrease-size').click();
 
                         expect(TextTool.prototype.handleDecreaseSizeClick).toBeDefined();
                         expect(TextTool.prototype.handleDecreaseSizeClick).toHaveBeenCalled();
 
                         expect(facade.publish).toHaveBeenCalled();
-                        expect(facade.publish.calls.mostRecent().args).toEqual(
+                        expect(facade.publish.calls.argsFor(0)).toEqual(
                             ['Font:change-size', {size: jasmine.any(Number)}]
                         );
 
@@ -61,6 +71,7 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                     });
 
                     it('Handler should be called when font style change', function(){
+                        facade.publish.calls.reset();
                         var $fontFamily = this.textTool.$('.font-family');
                         $fontFamily.val('Georgia');
                         $fontFamily.trigger('change');
@@ -69,7 +80,7 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                         expect(TextTool.prototype.handleFontStyleChange).toHaveBeenCalled();
 
                         expect(facade.publish).toHaveBeenCalled();
-                        expect(facade.publish.calls.mostRecent().args).toEqual(
+                        expect(facade.publish.calls.argsFor(0)).toEqual(
                             ['Font:change-style', {style: jasmine.any(String)}]
                         );
 

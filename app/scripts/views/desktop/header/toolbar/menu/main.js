@@ -7,31 +7,40 @@
  */
 
 /*global define*/
-define (['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/info'], function($, _, Backbone, facade, baseTemplate, InfoModel){
-    var View = Backbone.View.extend({
-        template: _.template(baseTemplate),
+define(
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/info'],
+    function ($, _, Backbone, facade, baseTemplate, InfoModel) {
+        var View = Backbone.View.extend({
+            template: _.template(baseTemplate),
 
-        initialize : function(){
-            facade.subscribe('BookModel:fetch-data-successed', 'render', this.render, this);
-        },
+            initialize: function () {
+                facade.subscribe('Viewer:resize', 'render', this.render, this);
+            },
 
-        render : function(){
-            var template = this.template({
-                Model: {
-                    chapters: InfoModel.get('chapter')
-                }
-            });
-            this.$el.html(template);
+            //region Function
+            render: function () {
+                var template = this.template({
+                    Model: {
+                        chapters: InfoModel.getChaptersModel()
+                    }
+                });
+                this.$el.html(template);
 
-            this.initComponents();
+                this.initComponents();
+                this.bindEvents();
 
-            return this;
-        },
+                return this;
+            },
 
-        initComponents : function(){
+            initComponents: function () {
 
-        }
+            },
+
+            bindEvents: function () {
+
+            }
+            //endregion
+        });
+
+        return View;
     });
-
-    return View;
-});

@@ -5,11 +5,13 @@
  * Date: 9/24/2014
  * Time: 5:51 PM
  */
+'use strict';
 
 /*global define*/
 define(
     ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', 'models/book'],
     function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, BookModel) {
+
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -19,6 +21,7 @@ define(
                 BookModel.fetchData();
             },
 
+            //region Function
             render: function(){
                 var template = this.template();
                 this.$el.html(template);
@@ -39,6 +42,7 @@ define(
                     el: this.$('footer')
                 });
             }
+            //endregion
         });
 
         return View;

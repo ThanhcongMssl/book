@@ -5,20 +5,24 @@
  * Date: 9/25/2014
  * Time: 4:29 PM
  */
+'use strict';
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/footer/info/base.html'],
-    function($, _, Backbone, facade, baseTemplate){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/footer/info/base.html', 'models/user'],
+    function($, _, Backbone, facade, baseTemplate, UserModel){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
         initialize : function(){
-            this.render();
+            facade.subscribe('CheckIn', 'render', this.render, this);
         },
 
+        //region Function
         render: function(){
-            var template = this.template();
+            var template = this.template({
+                Model: UserModel.getInfoModel()
+            });
             this.$el.html(template);
 
             this.initComponents();
@@ -29,6 +33,7 @@ define (
         initComponents: function(){
 
         }
+        //endregion
     });
 
     return View;

@@ -13,7 +13,7 @@ define (
     'use strict';
 
     var Model = Backbone.Model.extend({
-        //region Fetch
+        //region Fetch data
         url: '/data/book.json',
 
         fetchData: function(){
@@ -43,7 +43,7 @@ define (
 
             facade.publish('BookModel:fetch-data-successed');
         },
-        //endregion
+        //endregion                                          _
 
         //region Sync data
         syncLocation: function(){

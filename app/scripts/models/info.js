@@ -6,6 +6,8 @@
  * Time: 11:31 PM
  */
 
+'use strict';
+
 /*global define*/
 define (['backbone'], function(Backbone){
     var Model = Backbone.Model.extend({
@@ -13,6 +15,13 @@ define (['backbone'], function(Backbone){
 
         },
 
+        //region View Model
+        getChaptersModel : function(){
+
+        },
+        //endregion
+
+        //region Method
         getChapterById : function(id){
             var chapters = this.get('chapter'),
                 i = 0,
@@ -40,7 +49,12 @@ define (['backbone'], function(Backbone){
         getIdInPart : function(number){
             var parts = this.get('part');
             return parts[number] - parts[number - 1];
+        },
+
+        getPageById : function(id){
+
         }
+        //endregion
     });
 
     return new Model();

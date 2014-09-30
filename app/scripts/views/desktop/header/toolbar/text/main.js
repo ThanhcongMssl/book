@@ -14,9 +14,10 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
-            facade.subscribe('BookModel:fetch-data-successed', 'render', this.render, this);
+            facade.subscribe('Viewer:resize', 'render', this.render, this);
         },
 
+        //region Function
         render : function(){
             var template = this.template({
                 Model: {
@@ -34,12 +35,17 @@ define (
             return this;
         },
 
+        initComponents : function(){
+
+        },
+
         bindEvents: function(){
             Events.addListener('click', this.$('.increase-size'), this.handleIncreaseSizeClick, this);
             Events.addListener('click', this.$('.decrease-size'), this.handleDecreaseSizeClick, this);
             Events.addListener('change', this.$('.font-family'), this.handleFontStyleChange, this);
             Events.addListener('click', this.$('.background-color'), this.handleBackgroundColorChange, this);
         },
+        //endregion
 
         //region Handle events
         handleIncreaseSizeClick : function(){
@@ -74,12 +80,8 @@ define (
             facade.publish('Font:change-color', {
                 color: color
             });
-        },
-        //endregion
-
-        initComponents : function(){
-
         }
+        //endregion
     });
 
     return View;

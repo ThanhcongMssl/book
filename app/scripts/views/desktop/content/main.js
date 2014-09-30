@@ -19,6 +19,7 @@ define (
                 this.render();
             },
 
+            //region Function
             render: function(){
                 var template = this.template();
                 this.$el.html(template);
@@ -39,6 +40,7 @@ define (
                     el: this.$('.viewer')
                 });
             },
+            //endregion
 
             //region Method
             changeBackgroundColor: function(options){
