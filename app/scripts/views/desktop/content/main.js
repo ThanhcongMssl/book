@@ -15,6 +15,8 @@ define (
 
             initialize: function () {
                 facade.subscribe('Font:change-color', 'change background color', this.changeBackgroundColor, this);
+                facade.subscribe('Toolbar:open', 'show overlay', this.showOverlay, this);
+                facade.subscribe('Toolbar:close', 'hide overlay', this.hideOverlay, this);
 
                 this.render();
             },
@@ -47,6 +49,14 @@ define (
                 var color = options.color;
                 this.$el.removeClass();
                 this.$el.addClass(color);
+            },
+
+            showOverlay: function(){
+                this.$('.overlay').removeClass('hidden');
+            },
+
+            hideOverlay: function(){
+                this.$('.overlay').addClass('hidden');
             },
             //endregion
 

@@ -142,14 +142,16 @@ top: 13px;right: 8px}
 /*----------------------------------------------book-online-----------------------------------------*/
 .ic-onl-background{display: block;background: url("../images/icon_book_online.png") no-repeat;cursor: pointer}
 .ic-onl-back{width: 18px;height: 31px;background-position:-106px -52px;margin: 3px 21px 0 0;float: left;}
-.ic-onl-back:hover{background-position: -107px -20px}
 .ic-onl-option,.ic-onl-select-page,.ic-onl-Aa,.ic-onl-menu{float: right}
 .ic-onl-select-page {background-position:0 0;width: 27px;height: 28px;}
-.ic-onl-select-page,.ic-onl-menu,.ic-onl-Aa,.ic-onl-option,.ic-onl-bookmark{-webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;}
-.ic-onl-select-page:hover,.ic-onl-menu:hover,.ic-onl-Aa:hover,.ic-onl-option:hover{-webkit-transform:scale(1.2);
-    transform:scale(1.2);-moz-transform:scale(1.2)}
-.ic-onl-bookmark{width: 16px;height: 9px;background-position: -108px 0}
+.ic-onl-select-page,.ic-onl-menu,.ic-onl-Aa,.ic-onl-option,.ic-onl-back{-webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;}
+.ic-onl-select-page:hover,.ic-onl-menu:hover,.ic-onl-Aa:hover,.ic-onl-option:hover,.ic-onl-back:hover,.header-right>ul>li.visible>i{-webkit-transform:scale(1.1);
+    transform:scale(1.1);-moz-transform:scale(1.1)}
+.ic-onl-select-page:active,.ic-onl-menu:active,.ic-onl-Aa:active,.ic-onl-option:active,.ic-onl-back:active{-webkit-transform:scale(1);
+    transform:scale(1);-moz-transform:scale(1)}
+
+.ic-onl-bookmark{width: 39px;height: 55px;background-position: -132px -68px;}
 .ic-onl-menu{width: 26px;height: 25px;background-position:-28px 0}
 .ic-onl-Aa{width: 41px;height: 26px;background-position: -57px -0px}
 .ic-onl-option{width: 8px;height: 27px;background-position: -99px 0}
@@ -174,7 +176,9 @@ top: 13px;right: 8px}
 .ic-onl-next-page:hover{background-position: -79px -58px}
 .ic-onl-prev-page:hover{background-position: -53px -58px}
 .ic-onl-prev-page{width: 26px;height: 46px;background-position: 0 -58px;}
-
+.ic-one-column,.ic-two-columns{}
+.ic-one-column {width: 26px;height: 32px;float: left;background-position: -54px -235px;}
+.ic-two-columns {background-position: -83px -236px;width: 32px;height: 31px;float: left}
 
 
 

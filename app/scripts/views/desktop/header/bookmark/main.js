@@ -8,22 +8,18 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/bookmark/base.html', 'models/user'],
-    function($, _, Backbone, facade, baseTemplate, UserModel){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/bookmark/base.html'],
+    function($, _, Backbone, facade, baseTemplate){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
         initialize : function(){
-            facade.subscribe('Viewer:resize', 'render', this.render, this);
+            this.render();
         },
 
         //region Function
         render : function(){
-            var template = this.template({
-                Model: {
-                    bookmarks: UserModel.getBookmarksModel()
-                }
-            });
+            var template = this.template();
             this.$el.html(template);
 
             this.initComponents();

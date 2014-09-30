@@ -10,15 +10,11 @@ html, body {
 }
 
 body {
-    background: #f1f1f1;
+    background: #fff;
     font-size: 13px;
     font-family: Segoe UI, Helvetica, Arial, sans-serif;
     color: #272727;
     height: 100%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 a {
@@ -31,7 +27,8 @@ ul, li {
 
 button {
     border: none;
-    outline: none
+    outline: none;
+    background: none
 }
 
 input[type='text'], textarea, select {
@@ -50,9 +47,99 @@ div {
     display: block
 }
 
-#app {
-    height: 100%;
-    position: relative
+.border-radius {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.box-sizing {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+body.bg-specia {
+    background: #f0e8d1;
+    color: #3e2917
+}
+
+body.bg-white {
+    background: #fff;
+    color: #272727
+}
+
+body.bg-black {
+    background: #000;
+    color: #fafafa
+}
+
+.button-transition {
+    text-shadow: none !important;
+    cursor: pointer;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -ms-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.bt-night {
+    border: 1px solid #444;
+    background: #444;
+    background: -moz-linear-gradient(top, #444 30%, #222 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #444), color-stop(100%, #222));
+    background: -webkit-linear-gradient(top, #444 30%, #222 100%);
+    background: -o-linear-gradient(top, #444 30%, #222 100%);
+    background: -ms-linear-gradient(top, #444 30%, #222 100%);
+    background: linear-gradient(to bottom, #444 30%, #222 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444', endColorstr='#222', GradientType=0);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3 pxp;
+    color: #fff
+}
+
+.bt-night:active {
+    box-shadow: inset rgba(0, 0, 0, 0.5) 0px 0px 6px, rgba(62, 68, 70, 0.5) 0 0 0 2px
+}
+
+.bt-specia {
+    border: 1px solid #ccc;
+    background: #f9f3e4;
+    background: -moz-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #f9f3e4), color-stop(100%, #f0e8d1));
+    background: -webkit-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -o-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -ms-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: linear-gradient(to bottom, #f9f3e4 30%, #f0e8d1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f3e4', endColorstr='#f0e8d1', GradientType=0);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.bt-specia:active {
+    box-shadow: inset rgba(251, 205, 235, 0.5) 0px 0px 6px, #f7f2e2 0 0 0 2px
+}
+
+.bt-white {
+    border: 1px solid #ddd;
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(239, 239, 239, 1)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColortr='#efefef', GradientType=0);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.bt-white:active {
+    box-shadow: inset rgba(240, 240, 240, 1) 0px 0px 6px, rgba(221, 221, 221, 0.3) 0 0 0 2px
 }
 
 header, section#content, .text-action, .option > ul, .list-social, .book-content, .effect {
@@ -67,8 +154,9 @@ header {
     height: 54px;
     padding: 9px 10%;
     float: left;
-    position: relative;
-    z-index: 5
+    position: absolute;
+    top: 0;
+    left: 0
 }
 
 .header-left {
@@ -84,37 +172,17 @@ header {
 .bt-bookmark {
     border: none;
     background: none;
-    width: 19px;
+    width: 39px;
     float: right;
-    -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-}
-
-.bt-bookmark > span {
-    width: 15px;
-    height: 18px;
-    background: #fff;
-    display: block;
-    -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-}
-
-.bt-bookmark:hover > span {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    -moz-transform: scale(1.2)
 }
 
 .bt-bookmark:hover > .ic-onl-bookmark {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    -moz-transform: scale(1.2)
+    background-position: -132px -160px
 }
 
 .header-right > ul > li {
     float: left;
-    margin-left: 40px;
-    width: 49px;
+    margin-left: 36px;
     height: 54px
 }
 
@@ -122,16 +190,33 @@ header {
     display: none
 }
 
-.header-right > ul > li:hover > ul, .header-right > ul > li:hover > div {
+.header-right > ul > li.visible > ul, .header-right > ul > li.visible > div {
     display: block
 }
 
-.text-action, .option > ul {
+.text-action, .option > ul, .table-of-contents {
     position: absolute;
     z-index: 200;
     top: 42px;
     right: 0;
     background: #edf0f0;
+}
+
+.table-of-contents .list-book-mark {
+    right: 0
+}
+
+.table-of-contents .list-book-mark > ul > li > div {
+    padding: 0 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 5px 0
+}
+
+.table-of-contents .list-book-mark > ul > li:hover {
+    background: #fff;
+    cursor: pointer
 }
 
 .text-action {
@@ -150,7 +235,7 @@ header {
     cursor: pointer
 }
 
-.option > ul > li > span {
+.option > ul > li .op-items > span {
     font-size: 18px;
     margin-left: 81px;
     line-height: 70px
@@ -165,28 +250,32 @@ header {
     background: #fff
 }
 
-.option > ul > li > ul, .li-search > div {
+.op-items > div, .op-items > ul {
     display: none
 }
 
-.option > ul > li:hover > ul, .li-search:hover > div {
+.option > ul > li:hover .op-items > div, .op-items:hover > div, .op-items:hover > ul {
     display: block
 }
 
-.li-search > div, .li-list-bookmark > div, .li-mark-up > div {
-    position: absolute;
+.op-items > div {
     right: 300px;
+}
+
+.list-book-mark, .list-mark-up, .book-onl-search, .op-items > div {
     width: 554px;
     height: 354px;
     background: #fff;
-    overflow: auto
+    overflow: auto;
+    position: absolute;
+    z-index: 5
 }
 
-.li-list-bookmark > div {
+.op-bookmark > div {
     top: -142px
 }
 
-.li-mark-up > div {
+.op-markup > div {
     top: -71px
 }
 
@@ -195,6 +284,10 @@ header {
     color: #949494;
     width: 100%;
     float: left
+}
+
+.list-book-mark > ul > li:hover, .list-mark-up > ul > li:hover {
+    background: #fafafa
 }
 
 .list-book-mark > ul > li > div, .list-mark-up > ul > li > div {
@@ -231,7 +324,7 @@ header {
     text-align: right
 }
 
-.li-search > div {
+.op-search > div {
     top: 0
 }
 
@@ -279,26 +372,18 @@ header {
     background-position: -94px -145px
 }
 
-.li-list-bookmark > div, .li-mark-up > div {
-    display: none
-}
-
 .li-list-bookmark:hover > div, .li-mark-up:hover > div {
     display: block
 }
 
-.list-book-mark, .list-mark-up {
-    width: 100%;
-    float: left
-}
-
+/*.list-book-mark,.list-mark-up{width: 100%;float: left}*/
 .list-book-mark ul > .list-mark-up ul {
     width: 95%;
     float: left;
     margin: 50px 2.5% auto 2.5%
 }
 
-.list-book-mark ul li, .li-mark-up ul li {
+.list-book-mark ul li, .list-mark-up ul li {
     padding: 12px 0;
     border-bottom: 1px solid #ddd
 }
@@ -336,67 +421,6 @@ header {
     float: left
 }
 
-.brightness input[type="checkbox"] {
-    float: left
-}
-
-.brightness input[type="checkbox"] {
-    width: 26px;
-    height: 26px;
-    border: 1px solid #9f9f9f;
-    background: #edf0f0
-}
-
-.text-action div .rg-brightness {
-    float: left;
-    width: 50.5%;
-    height: 0.1rem;
-    background: #272727;
-    padding: 0;
-    position: relative;
-    margin: 1rem 1.5% 0 1.5%;
-}
-
-.text-action div .rg-track {
-    padding: 0;
-    height: 3px;
-    background: #373737;
-    position: absolute;
-    top: -50%;
-    left: 0;
-    z-index: 5;
-    width: 30%
-}
-
-.text-action div .rg-thumb {
-    width: 21px;
-    height: 21px;
-    border-radius: 200px;
-    -moz-border-radius: 200px;
-    -webkit-border-radius: 200px;
-    background: rgba(138, 139, 139, 0.5);
-    position: absolute;
-    right: -15px;
-    z-index: 10;
-    padding: 0;
-    top: -8px
-}
-
-.text-action div .rg-thumb span {
-    padding: 0;
-    width: 11px;
-    height: 11px;
-    background: #272727;
-    display: block;
-    border-radius: 100px;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    z-index: 15
-}
-
 .text-action div.font-style {
     border: solid #d2d0d0;
     border-width: 1px 0 1px 0
@@ -417,20 +441,31 @@ header {
 }
 
 .text-action div ul li label {
-    line-height: 39px
+    line-height: 39px;
+    color: #272727;
 }
 
 .text-action div ul li select {
     padding-left: 25px;
-    width: 75%;
-    float: right;
+    width: 44%;
+    float: left;
     height: 39px;
-    background: #d8dcdc;
+    background: #fff;
     outline: none;
     color: #272727;
-    font-size: 20px;
+    font-size: 17px;
     outline: none;
-    border: none
+    border: 1px solid #ccc;
+    margin-left: 62px
+}
+
+.text-action div ul li:first-child {
+    margin-top: 15px
+}
+
+.text-action div ul li:first-child button {
+    margin: 7px 0 0 5.8%;
+    float: left
 }
 
 .text-action div ul li div {
@@ -441,9 +476,8 @@ header {
 
 .text-action div ul li div button {
     height: 39px;
-    background: #d8dcdc;;
     color: #272727;
-    width: 8rem
+    width: 8rem;
 }
 
 .text-action div ul li div button:nth-child(1) {
@@ -460,28 +494,32 @@ header {
     height: 39px;
     width: 30%;
     float: left;
-    background: #d8dcdc;
-    float: left
 }
 
 .effect button:nth-child(2) {
     margin: 0 5%
 }
 
-.effect button:nth-child(3) {
-    background: #272727;
-    color: #fff
+.bt-bookmark.bookmarked .ic-onl-bookmark {
+    width: 39px;
+    height: 94px;
+    background-position: -132px -123px;
+}
+
+.bookmark {
+    position: absolute;
+    right: -50px;
+    top: -13px;
+    z-index: 200
 }
 
 section#content {
     width: 100%;
-    padding: 54px 10% 83px 10%;
+    padding: 0 10%;
     float: left;
-    background: #fff;
-    position: relative;
-    height: 100%;
     position: absolute;
-    z-index: 3
+    top: 54px;
+    bottom: 83px
 }
 
 section#content .book-content {
@@ -495,53 +533,34 @@ section#content .book-content {
     overflow: hidden
 }
 
-section#content .book-content .container{
-    height: 100%;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-    -webkit-column-gap: 112px;
-    -moz-column-gap: 112px;
-    column-gap: 112px;
-}
-
-section#content .book-content .container .article{
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-}
-
 #next-page {
     position: absolute;
-    right: 5%;
+    right: 7%;
     width: 26px;
     height: 46px;
     top: 0;
     bottom: 0;
     margin: auto 0;
-    padding-bottom: 83px
 }
 
 #prev-page {
     position: absolute;
-    left: 5%;
+    left: 7%;
     width: 26px;
     height: 46px;
     top: 0;
     bottom: 0;
     margin: auto 0;
-    padding-bottom: 83px
 }
 
 footer {
     width: 80%;
-    background: #fff;
     padding: 0 10% 15px 10%;
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #ebebeb;
-    z-index: 5
+    left: 0;
+    height: 83px;
+    background: #fff
 }
 
 footer > #defaultslide {
@@ -592,8 +611,7 @@ footer > #defaultslide {
     color: #fff;
     border: 2px solid #ccc;
     border-radius: 4px;
-    -moz-border-radius: 4 px-webkit-border-radius : 4 px;
-    z-index: 1
+    -moz-border-radius: 4 px-webkit-border-radius : 4 px
 }
 
 .tooltip .tooltip-arrow {
@@ -608,21 +626,12 @@ footer > #defaultslide {
     bottom: -20px
 }
 
-.tooltip.hidden {
-    display: none
-}
-
-.range-handle {
-    cursor: default !important
-}
-
 #location-chapter, #location-percent {
     width: 100%;
     float: left;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
-    text-align: center;
+    overflow: hidden
 }
 
 #location-percent {
@@ -642,6 +651,11 @@ footer > #defaultslide {
     display: none
 }
 
-.hidden{
-    display: none;
+/*------------------------------------hidden-----------------------------*/
+.hidden header, .hidden footer, .hidden #prev-page, .hidden #next-page {
+    visibility: hidden
+}
+
+.hidden header .bt-bookmark, .hidden footer .footer-info {
+    visibility: visible
 }

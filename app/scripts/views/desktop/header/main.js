@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'text!templates/desktop/header/base.html', './toolbar/main'],
-    function($, _, Backbone, baseTemplate, ToolbarView){
+    ['jquery', 'underscore', 'backbone', 'text!templates/desktop/header/base.html', './toolbar/main', './bookmark/main'],
+    function($, _, Backbone, baseTemplate, ToolbarView, BookmarkView){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -29,7 +29,10 @@ define (
         initComponents: function(){
             new ToolbarView({
                 el: this.$('.toolbar')
-            })
+            });
+            new BookmarkView({
+                el: this.$('.bookmark')
+            });
         }
     });
 

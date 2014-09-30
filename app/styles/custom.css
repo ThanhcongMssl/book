@@ -1,0 +1,46 @@
+/**
+ * Created with WebStorm.
+ * Name: custom.css
+ * User: ThànhCông
+ * Date: 9/30/2014
+ * Time: 11:21 PM
+ */
+
+.hidden{
+    display: none !important;
+}
+
+body{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container{
+    height: 100%;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 112px;
+    -moz-column-gap: 112px;
+    column-gap: 112px;
+}
+
+.container .article{
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.tooltip{
+    text-align: center;
+}
+
+.range-handle{
+    width: 20px;
+    height: 20px;
+    top: -9px;
+    cursor: default;
+}

@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/base.html', './menu/main', './highlight/main', './text/main', './bookmark/main', './option/main'],
-    function($, _, Backbone, facade, baseTemplate, MenuTool, HighlightTool, TextTool, BookmarkTool, OptionTool){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/base.html', './menu/main', './highlight/main', './text/main', './option/main', 'events'],
+    function($, _, Backbone, facade, baseTemplate, MenuTool, HighlightTool, TextTool, OptionTool, Events){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -22,27 +22,43 @@ define (
             this.$el.html(template);
 
             this.initComponents();
+            this.bindEvents();
 
             return this;
         },
 
         initComponents : function(){
-            new MenuTool({
-                el: this.$('.menu-tool')
+            this.addItem(MenuTool);
+            this.addItem(TextTool);
+            this.addItem(OptionTool);
+        },
+
+        addItem : function(Class){
+            var $item = $('<li class="toolbar-item">');
+            this.$el.append($item);
+            new Class({
+                el: $item
             });
-            new HighlightTool({
-                el: this.$('.highlight-tool')
-            });
-            new TextTool({
-                el: this.$('.text-tool')
-            });
-            new BookmarkTool({
-                el: this.$('.bookmark-tool')
-            });
-            new OptionTool({
-                el: this.$('.option-tool')
-            });
+        },
+
+        bindEvents: function(){
+            Events.addListener('click', this.$('.toolbar-item'), this.handleToolbarItemClick, this);
+        },
+
+        //region Handle events
+        handleToolbarItemClick : function(e){
+            var $currentTarget = this.$(e.currentTarget);
+            if($currentTarget.hasClass('visible')){
+                $currentTarget.removeClass('visible');
+                facade.publish('Toolbar:close');
+            } else {
+                this.$('.toolbar-item').removeClass('visible');
+                $currentTarget.addClass('visible');
+                facade.publish('Toolbar:open');
+            }
         }
+        //endregion
+
     });
 
     return View;

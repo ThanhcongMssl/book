@@ -8,8 +8,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/info'],
-    function ($, _, Backbone, facade, baseTemplate, InfoModel) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/info', 'events'],
+    function ($, _, Backbone, facade, baseTemplate, InfoModel, Events) {
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -37,7 +37,13 @@ define(
             },
 
             bindEvents: function () {
+                Events.addListener('click', this.$('.table-of-contents'), this.handleTableOfContentClick, this)
+            },
+            //endregion
 
+            //region Handle events
+            handleTableOfContentClick: function (e) {
+                e.stopPropagation();
             }
             //endregion
         });

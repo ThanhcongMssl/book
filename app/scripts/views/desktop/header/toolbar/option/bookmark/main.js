@@ -7,16 +7,22 @@
  */
 
 /*global define*/
-define (['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/bookmark/base.html'], function($, _, Backbone, facade, baseTemplate){
+define (
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/bookmark/base.html', 'models/user'],
+    function($, _, Backbone, facade, baseTemplate, UserModel){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
         initialize : function(){
-            this.render();
+            facade.subscribe('Viewer:resize', 'render', this.render, this);
         },
 
         render : function(){
-            var template = this.template();
+            var template = this.template({
+                Model: {
+                    bookmarks: UserModel.getBookmarksModel()
+                }
+            });
             this.$el.html(template);
 
             this.initComponents();

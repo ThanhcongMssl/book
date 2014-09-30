@@ -40,6 +40,7 @@ define (
         },
 
         bindEvents: function(){
+            Events.addListener('click', this.$('.text-action'), this.handleTextActionClick, this);
             Events.addListener('click', this.$('.increase-size'), this.handleIncreaseSizeClick, this);
             Events.addListener('click', this.$('.decrease-size'), this.handleDecreaseSizeClick, this);
             Events.addListener('change', this.$('.font-family'), this.handleFontStyleChange, this);
@@ -48,6 +49,10 @@ define (
         //endregion
 
         //region Handle events
+        handleTextActionClick: function (e) {
+            e.stopPropagation();
+        },
+
         handleIncreaseSizeClick : function(){
             var fontSize = UserModel.get('fontSize');
             UserModel.set('fontSize', ++fontSize);
