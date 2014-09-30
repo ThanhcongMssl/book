@@ -1,0 +1,647 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+html, body {
+    height: 100%;
+    min-width: 980px;
+    min-height: 20rem
+}
+
+body {
+    background: #f1f1f1;
+    font-size: 13px;
+    font-family: Segoe UI, Helvetica, Arial, sans-serif;
+    color: #272727;
+    height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a {
+    text-decoration: none
+}
+
+ul, li {
+    list-style: none
+}
+
+button {
+    border: none;
+    outline: none
+}
+
+input[type='text'], textarea, select {
+    outline: none
+}
+
+header, section, footer, div {
+    display: block
+}
+
+input[type='text'], input[type='password'], select {
+    height: 28px
+}
+
+div {
+    display: block
+}
+
+#app {
+    height: 100%;
+    position: relative
+}
+
+header, section#content, .text-action, .option > ul, .list-social, .book-content, .effect {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+header {
+    width: 100%;
+    background: #0ea8e8;
+    height: 54px;
+    padding: 9px 10%;
+    float: left;
+    position: relative;
+    z-index: 5
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+    position: relative;
+    margin-top: 3px
+}
+
+.bt-bookmark {
+    border: none;
+    background: none;
+    width: 19px;
+    float: right;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.bt-bookmark > span {
+    width: 15px;
+    height: 18px;
+    background: #fff;
+    display: block;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.bt-bookmark:hover > span {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -moz-transform: scale(1.2)
+}
+
+.bt-bookmark:hover > .ic-onl-bookmark {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -moz-transform: scale(1.2)
+}
+
+.header-right > ul > li {
+    float: left;
+    margin-left: 40px;
+    width: 49px;
+    height: 54px
+}
+
+.header-right > ul > li > ul, .header-right > ul > li > div {
+    display: none
+}
+
+.header-right > ul > li:hover > ul, .header-right > ul > li:hover > div {
+    display: block
+}
+
+.text-action, .option > ul {
+    position: absolute;
+    z-index: 200;
+    top: 42px;
+    right: 0;
+    background: #edf0f0;
+}
+
+.text-action {
+    width: 480px;
+}
+
+.option > ul {
+    width: 300px
+}
+
+.option > ul > li {
+    height: 70px;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    position: relative;
+    cursor: pointer
+}
+
+.option > ul > li > span {
+    font-size: 18px;
+    margin-left: 81px;
+    line-height: 70px
+}
+
+.option > ul > li:first-child {
+    border-top: none;
+}
+
+.option > ul > li:hover {
+    margin: 0;
+    background: #fff
+}
+
+.option > ul > li > ul, .li-search > div {
+    display: none
+}
+
+.option > ul > li:hover > ul, .li-search:hover > div {
+    display: block
+}
+
+.li-search > div, .li-list-bookmark > div, .li-mark-up > div {
+    position: absolute;
+    right: 300px;
+    width: 554px;
+    height: 354px;
+    background: #fff;
+    overflow: auto
+}
+
+.li-list-bookmark > div {
+    top: -142px
+}
+
+.li-mark-up > div {
+    top: -71px
+}
+
+.list-book-mark > ul > li, .list-mark-up > ul > li {
+    font-size: 13px;
+    color: #949494;
+    width: 100%;
+    float: left
+}
+
+.list-book-mark > ul > li > div, .list-mark-up > ul > li > div {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px
+}
+
+.list-book-mark > ul > li > span, .list-mark-up > ul > li > span {
+    float: right;
+    font-size: 11px;
+    width: 30%;
+    text-align: right
+}
+
+.list-mark-up > ul > li > span.mark-up-note {
+    float: left;
+    width: 60%;
+    color: #9c9c9c;
+    margin-left: 3%;
+    text-align: left
+}
+
+.list-book-mark > ul > li > div > span:nth-child(1), .list-mark-up > ul > li > div > span:nth-child(1) {
+    color: #0088d5;
+    float: left;
+    width: 80%;
+    margin-left: 3%
+}
+
+.list-book-mark > ul > li > div > span:nth-child(2), .list-mark-up > ul > li > div > span:nth-child(2) {
+    float: right;
+    width: 15%;
+    text-align: right
+}
+
+.li-search > div {
+    top: 0
+}
+
+.book-onl-search-result {
+    width: 100%;
+    float: left;
+    margin-top: 10px
+}
+
+.book-onl-search > form {
+    width: 95%;
+    margin: 0 2.5%;
+    border-bottom: 1px solid #ddd;
+    float: left;
+    margin-top: 43px
+}
+
+.book-onl-search-result {
+    width: 95%;
+    margin-top: 10px 2.5% 0 2.5%
+}
+
+.book-onl-search > form > input[type="text"] {
+    border: none;
+    background: #fff;
+    outline: none;
+    float: left;
+    border: none;
+    font-size: 14px;
+    color: #949494;
+    width: 480px
+}
+
+.book-onl-search > form > button {
+    width: 32px;
+    height: 26px;
+    margin-right: 6px;
+    float: left;
+    background: transparent
+}
+
+.book-onl-search > form > button .ic-onl-search-inner {
+    width: 21px;
+    height: 20px;
+    background-position: -94px -145px
+}
+
+.li-list-bookmark > div, .li-mark-up > div {
+    display: none
+}
+
+.li-list-bookmark:hover > div, .li-mark-up:hover > div {
+    display: block
+}
+
+.list-book-mark, .list-mark-up {
+    width: 100%;
+    float: left
+}
+
+.list-book-mark ul > .list-mark-up ul {
+    width: 95%;
+    float: left;
+    margin: 50px 2.5% auto 2.5%
+}
+
+.list-book-mark ul li, .li-mark-up ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd
+}
+
+.list-social {
+    width: 175px;
+    position: absolute;
+    right: 300px;
+    height: 354px;
+    background: #fff;
+    overflow: auto;
+    top: -213px;
+    padding: 0px 14px
+}
+
+.list-social > li {
+    margin: 26px 0;
+    float: left;
+    cursor: pointer
+}
+
+.list-social > li > span {
+    line-height: 32px;
+    font-size: 20px
+}
+
+.text-action div {
+    width: 100%;
+    padding: 15px 30px;
+    float: left
+}
+
+.text-action label {
+    font-size: 20px;
+    float: left
+}
+
+.brightness input[type="checkbox"] {
+    float: left
+}
+
+.brightness input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #9f9f9f;
+    background: #edf0f0
+}
+
+.text-action div .rg-brightness {
+    float: left;
+    width: 50.5%;
+    height: 0.1rem;
+    background: #272727;
+    padding: 0;
+    position: relative;
+    margin: 1rem 1.5% 0 1.5%;
+}
+
+.text-action div .rg-track {
+    padding: 0;
+    height: 3px;
+    background: #373737;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    z-index: 5;
+    width: 30%
+}
+
+.text-action div .rg-thumb {
+    width: 21px;
+    height: 21px;
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    background: rgba(138, 139, 139, 0.5);
+    position: absolute;
+    right: -15px;
+    z-index: 10;
+    padding: 0;
+    top: -8px
+}
+
+.text-action div .rg-thumb span {
+    padding: 0;
+    width: 11px;
+    height: 11px;
+    background: #272727;
+    display: block;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 15
+}
+
+.text-action div.font-style {
+    border: solid #d2d0d0;
+    border-width: 1px 0 1px 0
+}
+
+.text-action div.font-style {
+    padding: 15px 30px 0 30px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+.text-action div ul li {
+    width: 100%;
+    float: left;
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.text-action div ul li label {
+    line-height: 39px
+}
+
+.text-action div ul li select {
+    padding-left: 25px;
+    width: 75%;
+    float: right;
+    height: 39px;
+    background: #d8dcdc;
+    outline: none;
+    color: #272727;
+    font-size: 20px;
+    outline: none;
+    border: none
+}
+
+.text-action div ul li div {
+    float: right;
+    width: 75%;
+    padding: 0
+}
+
+.text-action div ul li div button {
+    height: 39px;
+    background: #d8dcdc;;
+    color: #272727;
+    width: 8rem
+}
+
+.text-action div ul li div button:nth-child(1) {
+    float: left;
+    font-size: 24px
+}
+
+.text-action div ul li div button:nth-child(2) {
+    float: right;
+    font-size: 30px
+}
+
+.effect button {
+    height: 39px;
+    width: 30%;
+    float: left;
+    background: #d8dcdc;
+    float: left
+}
+
+.effect button:nth-child(2) {
+    margin: 0 5%
+}
+
+.effect button:nth-child(3) {
+    background: #272727;
+    color: #fff
+}
+
+section#content {
+    width: 100%;
+    padding: 54px 10% 83px 10%;
+    float: left;
+    background: #fff;
+    position: relative;
+    height: 100%;
+    position: absolute;
+    z-index: 3
+}
+
+section#content .book-content {
+    padding: 2.5em 0;
+    text-align: justify;
+    font-size: 1.5em;
+    line-height: 175%;
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden
+}
+
+section#content .book-content .container{
+    height: 100%;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 112px;
+    -moz-column-gap: 112px;
+    column-gap: 112px;
+}
+
+section#content .book-content .container .article{
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+#next-page {
+    position: absolute;
+    right: 5%;
+    width: 26px;
+    height: 46px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    padding-bottom: 83px
+}
+
+#prev-page {
+    position: absolute;
+    left: 5%;
+    width: 26px;
+    height: 46px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    padding-bottom: 83px
+}
+
+footer {
+    width: 80%;
+    background: #fff;
+    padding: 0 10% 15px 10%;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #ebebeb;
+    z-index: 5
+}
+
+footer > #defaultslide {
+    float: left;
+    width: 100%;
+    margin: 26px 0 21px 0;
+    position: relative
+}
+
+.footer-info {
+    width: 100%;
+    float: left
+}
+
+.footer-info > span {
+    width: 15%;
+    font-size: 16px
+}
+
+.footer-info > p {
+    width: 70%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #747473;
+    float: left
+}
+
+.footer-info > p > span {
+    color: #aaa
+}
+
+.footer-info > span:first-child {
+    float: left
+}
+
+.footer-info > span:last-child {
+    float: right;
+    text-align: right
+}
+
+.tooltip {
+    background: #949494;
+    padding: 10px;
+    width: 182px;
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    -moz-border-radius: 4 px-webkit-border-radius : 4 px;
+    z-index: 1
+}
+
+.tooltip .tooltip-arrow {
+    width: 0;
+    height: 0;
+    border: 10px solid;
+    border-color: #949494 transparent transparent transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -20px
+}
+
+.tooltip.hidden {
+    display: none
+}
+
+.range-handle {
+    cursor: default !important
+}
+
+#location-chapter, #location-percent {
+    width: 100%;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+
+#location-percent {
+    text-align: center
+}
+
+.overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.overlay.hidden {
+    display: none
+}
+
+.hidden{
+    display: none;
+}

@@ -1,0 +1,244 @@
+{
+    "bookID": "13",
+    "part": [0, 1045, 2060, 3081, 4133, 5186, 6238, 7243, 8314, 9349, 10382, 11418, 12444, 13490, 14494, 15495, 16539, 17558, 18628, 19678, 20710, 21718, 22726, 23744, 24761, 25802, 26862, 27882],
+    "totalPart": 28,
+    "totalChapter": 23,
+    "chapter": [
+    {
+        "id": 495,
+        "reference": "#calibre_link-1",
+        "title": "Phần 1"
+    },
+    {
+        "id": 498,
+        "reference": "#calibre_link-2",
+        "title": "SEX VÀ…"
+    },
+    {
+        "id": 501,
+        "reference": "#calibre_link-3",
+        "title": "Sex trước hôn nhân"
+    },
+    {
+        "id": 1939,
+        "reference": "#calibre_link-4",
+        "title": "Chung sống tiền hôn nhân"
+    },
+    {
+        "id": 3906,
+        "reference": "#calibre_link-5",
+        "title": "Phong cách sống"
+    },
+    {
+        "id": 5306,
+        "reference": "#calibre_link-6",
+        "title": "Muốn làm người khác hạnh phúc, ta phải làm cho bản thân mình hạnh phúc trước"
+    },
+    {
+        "id": 6137,
+        "reference": "#calibre_link-7",
+        "title": "Bạn đời"
+    },
+    {
+        "id": 7757,
+        "reference": "#calibre_link-8",
+        "title": "Sex trong hôn nhân"
+    },
+    {
+        "id": 8938,
+        "reference": "#calibre_link-9",
+        "title": "Tình bạn khác giới"
+    },
+    {
+        "id": 11025,
+        "reference": "#calibre_link-10",
+        "title": "Gia đình và xã hội"
+    },
+    {
+        "id": 12273,
+        "reference": "#calibre_link-11",
+        "title": "Sex và đời sống"
+    },
+    {
+        "id": 14171,
+        "reference": "#calibre_link-12",
+        "title": "Làm mẹ đơn thân"
+    },
+    {
+        "id": 15496,
+        "reference": "#calibre_link-13",
+        "title": "Làm cha đơn thân"
+    },
+    {
+        "id": 17036,
+        "reference": "#calibre_link-14",
+        "title": "Sex and the City"
+    },
+    {
+        "id": 19402,
+        "reference": "#calibre_link-15",
+        "title": "Phần 2"
+    },
+    {
+        "id": 19405,
+        "reference": "#calibre_link-16",
+        "title": "Những thứ khác"
+    },
+    {
+        "id": 19409,
+        "reference": "#calibre_link-17",
+        "title": "Nhất nghệ tinh"
+    },
+    {
+        "id": 22028,
+        "reference": "#calibre_link-18",
+        "title": "Khi nào thì đồng lòng?"
+    },
+    {
+        "id": 23052,
+        "reference": "#calibre_link-19",
+        "title": "Cuộc đời và số phận"
+    },
+    {
+        "id": 24557,
+        "reference": "#calibre_link-20",
+        "title": "Chuyện con cá voi"
+    },
+    {
+        "id": 25052,
+        "reference": "#calibre_link-21",
+        "title": "Being assertive"
+    },
+    {
+        "id": 25918,
+        "reference": "#calibre_link-22",
+        "title": "Bonus"
+    },
+    {
+        "id": 27212,
+        "reference": "#calibre_link-23",
+        "title": "Phụ lục"
+    }
+],
+    "totalID": 28295,
+    "title": "Sex Và Những Thứ Khác - Tâm Phan",
+    "cover": "http://image.doko.vn/htmr/tl/1/7/7/9/9/9/2/images/cover.jpg",
+    "folder": null,
+    "listAllReferences": [
+    {
+        "id": 495,
+        "reference": "#calibre_link-1",
+        "title": "Phần 1"
+    },
+    {
+        "id": 498,
+        "reference": "#calibre_link-2",
+        "title": "SEX VÀ…"
+    },
+    {
+        "id": 501,
+        "reference": "#calibre_link-3",
+        "title": "Sex trước hôn nhân"
+    },
+    {
+        "id": 1939,
+        "reference": "#calibre_link-4",
+        "title": "Chung sống tiền hôn nhân"
+    },
+    {
+        "id": 3906,
+        "reference": "#calibre_link-5",
+        "title": "Phong cách sống"
+    },
+    {
+        "id": 5306,
+        "reference": "#calibre_link-6",
+        "title": "Muốn làm người khác hạnh phúc, ta phải làm cho bản thân mình hạnh phúc trước"
+    },
+    {
+        "id": 6137,
+        "reference": "#calibre_link-7",
+        "title": "Bạn đời"
+    },
+    {
+        "id": 7757,
+        "reference": "#calibre_link-8",
+        "title": "Sex trong hôn nhân"
+    },
+    {
+        "id": 8938,
+        "reference": "#calibre_link-9",
+        "title": "Tình bạn khác giới"
+    },
+    {
+        "id": 11025,
+        "reference": "#calibre_link-10",
+        "title": "Gia đình và xã hội"
+    },
+    {
+        "id": 12273,
+        "reference": "#calibre_link-11",
+        "title": "Sex và đời sống"
+    },
+    {
+        "id": 14171,
+        "reference": "#calibre_link-12",
+        "title": "Làm mẹ đơn thân"
+    },
+    {
+        "id": 15496,
+        "reference": "#calibre_link-13",
+        "title": "Làm cha đơn thân"
+    },
+    {
+        "id": 17036,
+        "reference": "#calibre_link-14",
+        "title": "Sex and the City"
+    },
+    {
+        "id": 19402,
+        "reference": "#calibre_link-15",
+        "title": "Phần 2"
+    },
+    {
+        "id": 19405,
+        "reference": "#calibre_link-16",
+        "title": "Những thứ khác"
+    },
+    {
+        "id": 19409,
+        "reference": "#calibre_link-17",
+        "title": "Nhất nghệ tinh"
+    },
+    {
+        "id": 22028,
+        "reference": "#calibre_link-18",
+        "title": "Khi nào thì đồng lòng?"
+    },
+    {
+        "id": 23052,
+        "reference": "#calibre_link-19",
+        "title": "Cuộc đời và số phận"
+    },
+    {
+        "id": 24557,
+        "reference": "#calibre_link-20",
+        "title": "Chuyện con cá voi"
+    },
+    {
+        "id": 25052,
+        "reference": "#calibre_link-21",
+        "title": "Being assertive"
+    },
+    {
+        "id": 25918,
+        "reference": "#calibre_link-22",
+        "title": "Bonus"
+    },
+    {
+        "id": 27212,
+        "reference": "#calibre_link-23",
+        "title": "Phụ lục"
+    }
+]
+}

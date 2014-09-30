@@ -6,22 +6,27 @@
  * Time: 5:02 PM
  */
 
-/*global requirejs */
+/*global define*/
 require.config({
+    baseUrl: '/app/scripts',
     shim: {
-        'handlebars': {
-            exports: 'Handlebars'
-        },
-        'backbone':{
+        backbone:{
             exports: 'Backbone'
+        },
+        powerange: {
+            exports: 'Powerange'
         }
     },
     paths: {
-        app: 'app',
-        jquery: 'app/bower_components/jquery/dist/jquery',
-        backbone: 'app/bower_components/backbone/backbone',
-        underscore: 'app/bower_components/lodash/dist/lodash',
-        text: 'app/bower_components/requirejs-text/text',
-        handlebars: 'app/bower_components/handlebars/handlebars'
+        spec: '../../test/spec',
+        jquery: '../bower_components/jquery/dist/jquery',
+        backbone: '../bower_components/backbone/backbone',
+        underscore: '../bower_components/lodash/dist/lodash',
+        text: '../bower_components/requirejs-text/text',
+        powerange: '../bower_components/powerange/dist/powerange.min',
+        facade: 'aura/facade',
+        mediator: 'aura/mediator',
+        permissions: 'aura/permissions',
+        events: 'utility/events'
     }
 });

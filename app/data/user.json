@@ -1,0 +1,13 @@
+{
+    "bookID":"13",
+    "currentID":0,
+    "currentPart":1,
+    "brightness":100,
+    "backgroundColor":"White",
+    "fontSize":24,
+    "fontFamily":"Arial",
+    "bookmark":[],
+    "highlights":[],
+    "notes":[],
+    "layout":"two-page"
+}
