@@ -14,9 +14,12 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
-           this.render();
+            facade.subscribe('Toolbar:close', 'hideToolbarContent', this.hideToolbarContent, this);
+
+            this.render();
         },
 
+        //region Function
         render : function(){
             var template = this.template();
             this.$el.html(template);
@@ -33,6 +36,12 @@ define (
             this.addItem(OptionTool);
         },
 
+        bindEvents: function(){
+            Events.addListener('click', this.$('.toolbar-item'), this.handleToolbarItemClick, this);
+        },
+        //endregion
+
+        //region Method
         addItem : function(Class){
             var $item = $('<li class="toolbar-item">');
             this.$el.append($item);
@@ -41,22 +50,24 @@ define (
             });
         },
 
-        bindEvents: function(){
-            Events.addListener('click', this.$('.toolbar-item'), this.handleToolbarItemClick, this);
+
+        hideToolbarContent : function(){
+            this.$('.toolbar-item').removeClass('visible');
         },
+        //endregion
 
         //region Handle events
         handleToolbarItemClick : function(e){
             var $currentTarget = this.$(e.currentTarget);
             if($currentTarget.hasClass('visible')){
-                $currentTarget.removeClass('visible');
                 facade.publish('Toolbar:close');
             } else {
                 this.$('.toolbar-item').removeClass('visible');
                 $currentTarget.addClass('visible');
                 facade.publish('Toolbar:open');
             }
-        }
+        },
+
         //endregion
 
     });

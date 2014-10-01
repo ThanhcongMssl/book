@@ -70,7 +70,7 @@ define (
             if (part == UserModel.get('currentPart')){
                 var X = Math.floor((id - InfoModel.get('part')[part - 1]) / (ViewModel.get('idPerPage') * ViewModel.get('column')));
                 this.translate(X);
-                facade.publish('CheckIn');
+                facade.publish('Viewer:check-in');
             } else {
                 UserModel.set('currentPart', part);
                 facade.publish('Request:part', {

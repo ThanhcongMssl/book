@@ -15,12 +15,6 @@ define (['backbone'], function(Backbone){
 
         },
 
-        //region View Model
-        getChaptersModel : function(){
-
-        },
-        //endregion
-
         //region Method
         getChapterById : function(id){
             var chapters = this.get('chapter'),

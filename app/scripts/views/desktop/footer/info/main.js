@@ -15,7 +15,7 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
-            facade.subscribe('CheckIn', 'render', this.render, this);
+            facade.subscribe('Viewer:check-in', 'render', this.render, this);
         },
 
         //region Function

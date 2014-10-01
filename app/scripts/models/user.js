@@ -32,6 +32,24 @@ define (['backbone', './info', './view'], function(Backbone, InfoModel, ViewMode
                 title: InfoModel.get('title'),
                 author: InfoModel.get('author')
             }
+        },
+
+        getChaptersModel : function(){
+            var chapters = InfoModel.get('chapter'),
+                chapterModel = [];
+
+            for(var i = 0, length = chapters.length; i < length; i++){
+                var chapter = chapters[i],
+                    model = {};
+
+                model.id = chapter.id;
+                model.title = chapter.title;
+                model.page = ViewModel.getPageById(chapter.id);
+
+                chapterModel.push(model);
+            }
+
+            return chapterModel;
         }
         //endregion
     });

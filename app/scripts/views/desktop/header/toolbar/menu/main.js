@@ -8,8 +8,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/info', 'events'],
-    function ($, _, Backbone, facade, baseTemplate, InfoModel, Events) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/user', 'events'],
+    function ($, _, Backbone, facade, baseTemplate, UserModel, Events) {
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -21,7 +21,7 @@ define(
             render: function () {
                 var template = this.template({
                     Model: {
-                        chapters: InfoModel.getChaptersModel()
+                        chapters: UserModel.getChaptersModel()
                     }
                 });
                 this.$el.html(template);
@@ -37,13 +37,25 @@ define(
             },
 
             bindEvents: function () {
-                Events.addListener('click', this.$('.table-of-contents'), this.handleTableOfContentClick, this)
+                Events.addListener('click', this.$('.table-of-contents'), this.handleTableOfContentClick, this);
+                Events.addListener('click', this.$('.chapter-list-item'), this.handleChapterListItemClick, this);
             },
             //endregion
 
             //region Handle events
             handleTableOfContentClick: function (e) {
                 e.stopPropagation();
+            },
+
+            handleChapterListItemClick: function (e) {
+                var $currentTarget = this.$(e.currentTarget),
+                    id = $currentTarget.attr('data-id');
+
+                facade.publish('Navigation:change', {
+                    ID: id
+                });
+
+                facade.publish('Toolbar:close');
             }
             //endregion
         });

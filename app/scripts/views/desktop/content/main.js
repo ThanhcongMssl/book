@@ -35,6 +35,7 @@ define (
             bindEvents : function(){
                 Events.addListener('click', this.$('.next'), this.handleNextButtonClick, this);
                 Events.addListener('click', this.$('.prev'), this.handlePrevButtonClick, this);
+                Events.addListener('click', this.$('.overlay'), this.handleOverlayClick, this);
             },
 
             initComponents: function(){
@@ -77,6 +78,10 @@ define (
                 facade.publish('Navigation:change', {
                     ID: id
                 });
+            },
+
+            handleOverlayClick : function(){
+                facade.publish('Toolbar:close');
             }
             //endregion
         });
