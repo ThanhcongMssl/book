@@ -34,29 +34,26 @@ define (
         },
 
         bindEvents: function () {
-            Events.addListener('click', this.$('.bookmark-btn'), this.handleBookmarkClick, this);
+            Events.addListener('click', this.$el, this.handleBookmarkClick, this);
         },
         //endregion
 
         //region Method
         checkBookmark: function(){
-            var $bookmarkButton = this.$('.bookmark-btn');
             if (UserModel.checkBookmark()){
-                $bookmarkButton.addClass('bookmarked');
+                this.$el.addClass('bookmarked');
             } else {
-                $bookmarkButton.removeClass('bookmarked');
+                this.$el.removeClass('bookmarked');
             }
         },
         //endregion
 
         //region Handle events
-        handleBookmarkClick: function(e){
-            var $currentTartget = this.$(e.currentTarget);
-
+        handleBookmarkClick: function(){
             var bookmark,
                 bookmarks = UserModel.get('bookmark');
-            if ($currentTartget.hasClass('bookmarked')){
-                $currentTartget.removeClass('bookmarked');
+            if (this.$el.hasClass('bookmarked')){
+                this.$el.removeClass('bookmarked');
                 bookmark = UserModel.checkBookmark();
                 UserModel.set('bookmark', _.without(bookmarks, bookmark));
             } else {
@@ -67,8 +64,10 @@ define (
                 bookmark.title = chapter.title;
                 bookmark.date = DateFormat.format(new Date());
                 bookmarks.push(bookmark);
+                UserModel.set('bookmark', bookmarks);
+                UserModel.trigger('change:bookmark');
 
-                $currentTartget.addClass('bookmarked');
+                this.$el.addClass('bookmarked');
             }
         }
         //endregion

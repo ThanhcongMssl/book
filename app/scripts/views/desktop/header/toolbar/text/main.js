@@ -59,6 +59,7 @@ define (
             facade.publish('Font:change-size', {
                 size: fontSize
             });
+            return false;
         },
 
         handleDecreaseSizeClick : function(){
@@ -67,7 +68,7 @@ define (
             facade.publish('Font:change-size', {
                 size: fontSize
             });
-
+            return false;
         },
 
         handleFontStyleChange : function(){

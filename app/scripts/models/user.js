@@ -12,7 +12,13 @@
 define (['backbone', './info', './view', 'utility/date'], function(Backbone, InfoModel, ViewModel, DateFormat){
     var Model = Backbone.Model.extend({
         initialize : function(){
-
+            this.bind('change:currentID', this.syncLocation, this);
+            this.bind('change:currentPart', this.syncLocation, this);
+            this.bind('change:fontSize', this.syncFont, this);
+            this.bind('change:fontFamily', this.syncFont, this);
+            this.bind('change:layout', this.syncLayout, this);
+            this.bind('change:backgroundColor', this.syncTheme, this);
+            this.bind('change:bookmark', this.syncBookmark, this);
         },
 
         //region View Model
@@ -94,6 +100,90 @@ define (['backbone', './info', './view', 'utility/date'], function(Backbone, Inf
             }
 
             return null;
+        },
+        //endregion
+
+        //region Sync data
+        syncLocation: function(){
+            Backbone.ajax({
+                url: '/book/SyncLocation',
+                data: {
+                    bookID: this.get('bookID'),
+                    currentLocation: this.get('currentID'),
+                    partNumber: this.get('currentPart')
+                },
+                type: "POST",
+                success: function (response) {
+                    if (response.success) {
+
+                    }
+                }
+            });
+        },
+
+        syncFont: function () {
+            Backbone.ajax({
+                url: '/book/SyncFont',
+                data: {
+                    bookID: this.get('bookID'),
+                    fontSize: this.get('fontSize'),
+                    fontFamily: this.get('fontFamily')
+                },
+                type: "POST",
+                success: function (response) {
+                    if (response.success) {
+
+                    }
+                }
+            });
+        },
+
+        syncLayout : function(){
+            Backbone.ajax({
+                url: '/book/SyncLayout',
+                data: {
+                    bookID: this.get('bookID'),
+                    layout: this.get('layout')
+                },
+                type: "POST",
+                success: function (response) {
+                    if (response.success) {
+
+                    }
+                }
+            });
+        },
+
+        syncTheme: function () {
+            Backbone.ajax({
+                url: '/book/SyncTheme',
+                data: {
+                    bookID: this.get('bookID'),
+                    backgroundColor: this.get('backgroundColor')
+                },
+                type: "POST",
+                success: function (response) {
+                    if (response.success) {
+
+                    }
+                }
+            });
+        },
+
+        syncBookmark: function () {
+            Backbone.ajax({
+                url: '/book/SyncBookmark',
+                data: {
+                    bookID: this.get('bookID'),
+                    bookmark: JSON.stringify(this.get('bookmark'))
+                },
+                type: "POST",
+                success: function (response) {
+                    if (response.success) {
+
+                    }
+                }
+            });
         }
         //endregion
     });
