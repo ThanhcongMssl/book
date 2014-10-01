@@ -62,7 +62,7 @@ define (
 
             //region Handle events
             handleNextButtonClick : function(){
-                var id = UserModel.get('currentID') + ViewModel.get('idPerPage'),
+                var id = UserModel.get('currentID') + (ViewModel.get('idPerPage') * ViewModel.get('column')),
                     totalID = InfoModel.get('totalID');
                 id = id > totalID ? totalID : id;
                 facade.publish('Navigation:change', {
@@ -71,7 +71,7 @@ define (
             },
 
             handlePrevButtonClick : function(){
-                var id = UserModel.get('currentID') - ViewModel.get('idPerPage'),
+                var id = UserModel.get('currentID') - (ViewModel.get('idPerPage') * ViewModel.get('column')),
                     parts = InfoModel.get('part');
                 id = id < parts[0] ? parts[0] : id;
                 facade.publish('Navigation:change', {

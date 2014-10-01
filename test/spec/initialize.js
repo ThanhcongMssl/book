@@ -99,6 +99,7 @@ define (['facade', 'backbone', 'models/book', 'models/view', 'models/info', 'mod
                                 spyOn(Viewer.prototype, 'initialize').and.callThrough();
                                 spyOn(Viewer.prototype, 'render').and.callThrough();
                                 spyOn(Viewer.prototype, 'calculateIdPerPage').and.callThrough();
+                                spyOn(Viewer.prototype, 'calculatePageNumberOfParts').and.callThrough();
                                 spyOn(Viewer.prototype, 'changeView').and.callThrough();
 
                                 spyOn(ViewModel, 'fetchData').and.callThrough();
@@ -153,11 +154,15 @@ define (['facade', 'backbone', 'models/book', 'models/view', 'models/info', 'mod
                                 UserModel.set('currentID', 0);
                                 UserModel.set('currentPart', 1);
                                 InfoModel.set('part', [0, 1000, 3000]);
+                                ViewModel.set('idPerPage', 250);
 
                                 this.viewer.$el.height(500);
                                 this.viewer.$('.container').css('column-count', 2);
                                 this.viewer.$('.article').height(4000);
+                                expect(this.viewer.calculateIdPerPage).toBeDefined();
                                 expect(this.viewer.calculateIdPerPage()).toEqual(250);
+                                expect(this.viewer.calculatePageNumberOfParts).toBeDefined();
+                                expect(this.viewer.calculatePageNumberOfParts()).toEqual([0, 4, 12]);
                             });
 
                             it('And should be changed view to current ID', function(){
@@ -166,8 +171,6 @@ define (['facade', 'backbone', 'models/book', 'models/view', 'models/info', 'mod
                                     [{ID: jasmine.any(Number)}]
                                 );
                             });
-
-
                         });
                     });
                 });

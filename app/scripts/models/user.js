@@ -9,7 +9,7 @@
 'use strict';
 
 /* global define */
-define (['backbone'], function(Backbone){
+define (['backbone', './info', './view'], function(Backbone, InfoModel, ViewModel){
     var Model = Backbone.Model.extend({
         initialize : function(){
 
@@ -21,7 +21,17 @@ define (['backbone'], function(Backbone){
         },
 
         getInfoModel: function(){
-
+            var id = this.get('currentID'),
+                totalId = InfoModel.get('totalID'),
+                page = ViewModel.getPageById(id),
+                percent = Math.round(id / totalId * 100);
+            return {
+                page: page,
+                totalPage: ViewModel.getPageById(totalId),
+                percent: percent,
+                title: InfoModel.get('title'),
+                author: InfoModel.get('author')
+            }
         }
         //endregion
     });

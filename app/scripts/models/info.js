@@ -49,10 +49,6 @@ define (['backbone'], function(Backbone){
         getIdInPart : function(number){
             var parts = this.get('part');
             return parts[number] - parts[number - 1];
-        },
-
-        getPageById : function(id){
-
         }
         //endregion
     });

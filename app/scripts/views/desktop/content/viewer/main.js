@@ -44,6 +44,7 @@ define (
         initComponents: function(){
             this.resizeImage();
             ViewModel.set('idPerPage', this.calculateIdPerPage());
+            ViewModel.set('pageNumberOfParts', this.calculatePageNumberOfParts());
             facade.publish('Viewer:resize');
         },
 
@@ -67,7 +68,7 @@ define (
                 part = InfoModel.getPartById(id);
             UserModel.set('currentID', id);
             if (part == UserModel.get('currentPart')){
-                var X = Math.floor((id - InfoModel.get('part')[part - 1]) / ViewModel.get('idPerPage'));
+                var X = Math.floor((id - InfoModel.get('part')[part - 1]) / (ViewModel.get('idPerPage') * ViewModel.get('column')));
                 this.translate(X);
                 facade.publish('CheckIn');
             } else {
@@ -114,9 +115,25 @@ define (
                 articleHeight = this.$('.article').height(),
                 idInPart = InfoModel.getIdInPart(UserModel.get('currentPart'));
 
-            viewerHeight *= this.$('.container').css('column-count');
+            var column = this.$('.container').css('column-count');
+            ViewModel.set('column', column);
+            viewerHeight *= column;
 
             return Math.floor((viewerHeight / articleHeight) * idInPart);
+        },
+
+        calculatePageNumberOfParts: function(){
+            var parts = InfoModel.get('part'),
+                idPerPage = ViewModel.get('idPerPage');
+
+            var pageNumberOfParts = [0];
+            for(var i = 0, length = parts.length - 1; i < length; i++){
+                var idInPart = InfoModel.getIdInPart(i + 1),
+                    pageNumber = Math.ceil(idInPart/idPerPage);
+                pageNumberOfParts.push(pageNumberOfParts[i] + pageNumber);
+            }
+
+            return pageNumberOfParts;
         }
         //endregion
     });
