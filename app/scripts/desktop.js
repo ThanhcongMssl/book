@@ -14,6 +14,7 @@ require.config({
         facade: 'aura/facade',
         mediator: 'aura/mediator',
         permissions: 'aura/permissions',
+        utility: 'utility',
         events: 'utility/events',
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',

@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/bookmark/base.html', 'models/user'],
-    function($, _, Backbone, facade, baseTemplate, UserModel){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/bookmark/base.html', 'models/user', 'events'],
+    function($, _, Backbone, facade, baseTemplate, UserModel, Events){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -17,6 +17,7 @@ define (
             facade.subscribe('Viewer:resize', 'render', this.render, this);
         },
 
+        //region Fucntion
         render : function(){
             var template = this.template({
                 Model: {
@@ -26,13 +27,32 @@ define (
             this.$el.html(template);
 
             this.initComponents();
+            this.bindEvents();
 
             return this;
         },
 
         initComponents : function(){
 
+        },
+
+        bindEvents: function () {
+            Events.addListener('click', this.$('.bookmark-list-item'), this.handleBookmarkListItemClick, this);
+        },
+        //endregion
+
+        //region Handle events
+        handleBookmarkListItemClick: function (e) {
+            var $currentTarget = this.$(e.currentTarget),
+                id = $currentTarget.attr('data-id');
+
+            facade.publish('Navigation:change', {
+                ID: id
+            });
+
+            facade.publish('Toolbar:close');
         }
+        //endregion
     });
 
     return View;

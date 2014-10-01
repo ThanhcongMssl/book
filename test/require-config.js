@@ -27,6 +27,7 @@ require.config({
         facade: 'aura/facade',
         mediator: 'aura/mediator',
         permissions: 'aura/permissions',
+        utility: 'utility',
         events: 'utility/events'
     }
 });

@@ -9,7 +9,7 @@
 'use strict';
 
 /* global define */
-define (['backbone', './info', './view'], function(Backbone, InfoModel, ViewModel){
+define (['backbone', './info', './view', 'utility/date'], function(Backbone, InfoModel, ViewModel, DateFormat){
     var Model = Backbone.Model.extend({
         initialize : function(){
 
@@ -17,7 +17,22 @@ define (['backbone', './info', './view'], function(Backbone, InfoModel, ViewMode
 
         //region View Model
         getBookmarksModel : function(){
+            var bookmarks = this.get('bookmark'),
+                bookmarkModel = [];
 
+            for(var i = 0, length = bookmarks.length; i < length; i++){
+                var bookmark = bookmarks[i],
+                    model = {};
+
+                model.id = bookmark.id;
+                model.title = bookmark.title;
+                model.page = ViewModel.getPageById(bookmark.id);
+                model.date = DateFormat.format(bookmark.date);
+
+                bookmarkModel.push(model);
+            }
+
+            return bookmarkModel;
         },
 
         getInfoModel: function(){
@@ -50,6 +65,12 @@ define (['backbone', './info', './view'], function(Backbone, InfoModel, ViewMode
             }
 
             return chapterModel;
+        },
+        //endregion
+
+        //region Function
+        formatDate: function(date){
+
         }
         //endregion
     });
