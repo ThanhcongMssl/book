@@ -50,6 +50,7 @@ define (
 
         bindEvents: function(){
             Events.addListener('resize', window, this.handleWindowResize, this);
+            Events.addListener('click', this.$el, this.handleViewerClick, this);
         },
         //endregion
 
@@ -59,6 +60,10 @@ define (
             this.changeView({
                 ID: UserModel.get('currentID')
             });
+        },
+
+        handleViewerClick : function(){
+            facade.publish('Read:start');
         },
         //endregion
 

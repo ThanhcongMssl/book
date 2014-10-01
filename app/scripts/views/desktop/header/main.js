@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'text!templates/desktop/header/base.html', './toolbar/main', './bookmark/main'],
-    function($, _, Backbone, baseTemplate, ToolbarView, BookmarkView){
+    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/desktop/header/base.html', './toolbar/main', './bookmark/main'],
+    function($, _, Backbone, facade, Events, baseTemplate, ToolbarView, BookmarkView){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -22,6 +22,7 @@ define (
             this.$el.html(template);
 
             this.initComponents();
+            this.bindEvents();
 
             return this;
         },
@@ -33,7 +34,18 @@ define (
             new BookmarkView({
                 el: this.$('.bookmark')
             });
+        },
+
+        bindEvents : function(){
+            Events.addListener('mouseover', this.$el, this.handleHeaderHover, this);
+        },
+
+        //region Handle events
+        handleHeaderHover: function () {
+            facade.publish('Read:stop');
         }
+        //endregion
+
     });
 
     return View;

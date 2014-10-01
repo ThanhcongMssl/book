@@ -17,6 +17,8 @@ define(
 
             initialize: function () {
                 facade.subscribe('BookModel:fetch-data-successed', 'render', this.render, this);
+                facade.subscribe('Read:start', 'hidden', this.startReadMode, this);
+                facade.subscribe('Read:stop', 'hidden', this.stopReadMode, this);
 
                 BookModel.fetchData();
             },
@@ -41,6 +43,16 @@ define(
                 new Footer({
                     el: this.$('footer')
                 });
+            },
+            //endregion
+
+            //region Method
+            startReadMode: function(){
+                this.$el.addClass('read');
+            },
+
+            stopReadMode : function(){
+                this.$el.removeClass('read');
             }
             //endregion
         });
