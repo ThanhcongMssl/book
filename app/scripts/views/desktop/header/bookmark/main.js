@@ -14,6 +14,7 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
+            facade.subscribe('Viewer:check-in', 'check bookmark', this.checkBookmark, this);
             this.render();
         },
 
@@ -33,21 +34,46 @@ define (
         },
 
         bindEvents: function () {
-            Events.addListener('click', this.$('.bookmark'), this.handleBookmarkClick, this);
+            Events.addListener('click', this.$('.bookmark-btn'), this.handleBookmarkClick, this);
+        },
+        //endregion
+
+        //region Method
+        checkBookmark: function(){
+            var $bookmarkButton = this.$('.bookmark-btn');
+            if (UserModel.checkBookmark()){
+                $bookmarkButton.addClass('bookmarked');
+            } else {
+                $bookmarkButton.removeClass('bookmarked');
+            }
         },
         //endregion
 
         //region Handle events
-        handleBookmarkClick: function(){
-            var id = UserModel.get('currentID'),
-                chapter = InfoModel.getChapterById(id);
-            var bookmark = {};
-            bookmark.id = id;
-            bookmark.title = chapter.title;
-            bookmark.date = DateFormat.format(new Date());
-            UserModel.get('bookmark').push(bookmark);
+        handleBookmarkClick: function(e){
+            var $currentTartget = this.$(e.currentTarget);
+
+            var bookmark,
+                bookmarks = UserModel.get('bookmark');
+            if ($currentTartget.hasClass('bookmarked')){
+                $currentTartget.removeClass('bookmarked');
+                bookmark = UserModel.checkBookmark();
+                UserModel.set('bookmark', _.without(bookmarks, bookmark));
+            } else {
+                var id = UserModel.get('currentID'),
+                    chapter = InfoModel.getChapterById(id);
+                bookmark = {};
+                bookmark.id = id;
+                bookmark.title = chapter.title;
+                bookmark.date = DateFormat.format(new Date());
+                bookmarks.push(bookmark);
+
+                $currentTartget.addClass('bookmarked');
+            }
         }
         //endregion
+
+
     });
 
     return View;
