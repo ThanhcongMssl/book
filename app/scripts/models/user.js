@@ -68,9 +68,32 @@ define (['backbone', './info', './view', 'utility/date'], function(Backbone, Inf
         },
         //endregion
 
-        //region Function
-        formatDate: function(date){
+        //region Method
+        checkBookmark : function(id){
+            var id = id || this.get('currentID'),
+                bookmarks = this.get('bookmark'),
+                idPerPage = ViewModel.get('idPerPage'),
+                column = ViewModel.get('column'),
+                totalId = InfoModel.get('totalID'),
+                part = InfoModel.getPartById(id),
+                idOfPart = InfoModel.get('part')[part - 1];
 
+            id = id - idOfPart;
+
+            var startId = id - (id % (idPerPage * column)),
+                endId = startId + (idPerPage * column);
+
+            endId = endId > totalId ? totalId : endId;
+
+            for(var i = 0, length = bookmarks.length; i < length; i++){
+                var bookmark = bookmarks[i],
+                    bookmarId = bookmark.id - idOfPart;
+                if (bookmarId >= startId && bookmarId <= endId){
+                    return bookmark;
+                }
+            }
+
+            return null;
         }
         //endregion
     });
