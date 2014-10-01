@@ -27,7 +27,7 @@ define (['backbone', './info', './view', 'utility/date'], function(Backbone, Inf
                 model.id = bookmark.id;
                 model.title = bookmark.title;
                 model.page = ViewModel.getPageById(bookmark.id);
-                model.date = DateFormat.format(bookmark.date);
+                model.date = DateFormat.format(new Date(bookmark.date), 'book');
 
                 bookmarkModel.push(model);
             }

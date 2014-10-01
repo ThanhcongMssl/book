@@ -21,11 +21,18 @@ define (['backbone'], function(Backbone){
                 i = 0,
                 length = chapters.length;
 
-            while (i < length && id > chapters[i].id) {
+            while (i < length && id >= chapters[i].id) {
                 i++;
             }
 
-            return chapters[i-1];
+            if (i < length && i > 0){
+                return chapters[i-1];
+            } else{
+                return {
+                    id: 0,
+                    title: this.get('title')
+                }
+            }
         },
 
         getPartById : function(id){

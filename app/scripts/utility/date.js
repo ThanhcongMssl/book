@@ -30,11 +30,31 @@ define ([], function(){
                 dayName = this.getDayName();
             return dayName + ', ' + day + ' ' + month + ', ' + year;
         };
+
+        Date.prototype.serverFormat = function(){
+            var year = this.getFullYear(),
+                month = this.getMonth(),
+                day = this.getDate(),
+                hour = this.getHours(),
+                min = this.getMinutes(),
+                second = this.getSeconds();
+            return year + '/' + month + '/' + day + ' ' + hour + ':' + min + ':' + second;
+        };
     };
 
     DateFormat.prototype = {
-        format: function(date){
-            return (new Date(date)).bookFormat();
+        format: function(date, type){
+            switch (type){
+                case 'server' : {
+                    return date.serverFormat();
+                }
+                case 'book': {
+                    return date.bookFormat();
+                }
+                default:{
+                    return date.bookFormat();
+                }
+            }
         }
     };
 
