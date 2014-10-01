@@ -37,7 +37,7 @@ define (
         },
 
         bindEvents : function(){
-            Events.addListener('mouseover', this.$el, this.handleHeaderHover, this);
+            Events.addListener('mouseenter', this.$el, this.handleHeaderHover, this);
         },
 
         //region Handle events

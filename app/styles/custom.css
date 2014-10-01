@@ -38,6 +38,21 @@ body{
     text-align: center;
 }
 
+.Night{
+    color: #fff;
+    background: #333;
+}
+
+.Sepia{
+    color: #272727;
+    background: #f9f3e4;
+}
+
+.White{
+    color:
+    background: #fff;
+}
+
 .range-handle{
     width: 20px;
     height: 20px;

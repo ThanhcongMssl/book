@@ -689,19 +689,26 @@ footer > #defaultslide {
 }
 
 /*------------------------------------hidden-----------------------------*/
-.hidden header, .hidden footer, .hidden #prev-page, .hidden #next-page {
-    visibility: hidden
+.read #prev-page:hover, .read #next-page:hover{
+    visibility: visible;
 }
 
-.hidden header .bt-bookmark, .hidden footer .footer-info, .hidden #logo, .hidden .ic-onl-back {
+.read header{
+    background: transparent;
+}
+.read footer, .read #prev-page, .read #next-page {
+    visibility: hidden;
+}
+
+.read header .bt-bookmark, .read footer .footer-info, .read #logo, .read .ic-onl-back {
     visibility: visible
 }
 
-.hidden #logo {
+.read #logo {
     background: url("../images/logo_book_online.png") no-repeat -79px 0
 }
 
-.hidden .ic-onl-back {
+.read .ic-onl-back {
     background-position: -105px -83px
 }
 
