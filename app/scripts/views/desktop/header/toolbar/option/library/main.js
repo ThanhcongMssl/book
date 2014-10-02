@@ -39,6 +39,7 @@ define (['jquery', 'underscore', 'backbone', 'facade', 'events', 'models/info', 
         },
         //endregion
 
+        //region Handle events
         handleLibraryClick: function(){
             if (this.$('.op-add-to-library').hasClass('added')){
                 this.removeBook();
@@ -47,7 +48,9 @@ define (['jquery', 'underscore', 'backbone', 'facade', 'events', 'models/info', 
             }
 
         },
+        //endregion
 
+        //region Method
         addBook : function(){
             var that = this;
 
@@ -85,6 +88,7 @@ define (['jquery', 'underscore', 'backbone', 'facade', 'events', 'models/info', 
 
             return false;
         }
+        //endregion
     });
 
     return View;
