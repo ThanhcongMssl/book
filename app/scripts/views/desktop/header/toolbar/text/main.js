@@ -82,8 +82,8 @@ define (
         handleBackgroundColorChange : function(e){
             var $currentTarget = this.$(e.currentTarget),
                 color = $currentTarget.attr('data-color');
-            this.$('.background-color').removeClass('bt-active');
-            $currentTarget.addClass('bt-active');
+            this.$('.background-color').removeClass('active');
+            $currentTarget.addClass('active');
             UserModel.set('backgroundColor', color);
             facade.publish('Font:change-color', {
                 color: color

@@ -50,7 +50,7 @@ body{
 
 .White{
     color:
-    background: #fff;
+        background: #fff;
 }
 
 .range-handle{
@@ -59,3 +59,117 @@ body{
     top: -9px;
     cursor: default;
 }
+
+
+/* Style */
+
+.text-action div.font-style{
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+}
+
+.one-page{
+    float: left;
+    margin-top: 1px;
+    margin-left: 7px;
+}
+
+.two-page{
+    float: left;
+    margin-top: 1px;
+    margin-right: 5px;
+    margin-left: 7px;
+}
+
+.increase-size, .decrease-size{
+    width: 81px;
+    height: 37px;
+}
+
+.increase-size {
+    margin-left: 8px;
+    font-size: 21px;
+    line-height: 21px;
+}
+
+.decrease-size {
+    font-size: 16px;
+}
+
+.background-color {
+    width: 110px;
+    margin-right: 10px;
+}
+
+.layout label{
+    margin-right: 8px;
+}
+
+.effect label{
+    line-height: 35px;
+}
+
+/* Bootstrap custom */
+
+.form-control{
+    border-radius: 0;
+}
+
+label{
+    font-weight: normal;
+}
+
+.well{
+    padding: 1px 5px;
+    border-radius: 0;
+}
+
+.btn-sepia{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #f0e8d1;
+}
+.btn-sepia:hover {
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+.btn-sepia:active{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+.btn-sepia.active{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+/* night */
+
+.btn-night{
+    color: #fff;
+    border-color: #222;
+    background: #555;
+}
+.btn-night:hover {
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}
+
+.btn-night:active{
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}
+
+.btn-night.active{
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}
+

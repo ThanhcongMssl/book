@@ -45,11 +45,11 @@
 .upload .upload-content >button {float: right;background: #037eb1;color: #fff; width: 104px;height: 38px;margin: 5px 130px 0 0;cursor: pointer}
 .download-info>div>button {width: 254px;height: 30px;background: #3b5998;border-radius: 3px;-moz-border-radius: 3px;color: #fff;font-size: 15px}
 .download-info>div>button:hover,.download-info>div>button:active{background: #008ac3}
-    .ic-document,.ic-search-topic,.ic-user{display: block;float: left;background: url("../images/icon.png") no-repeat}
-    .ic-document{width: 19px;height: 15px;background-position: -38px -137px;margin: 17px 7px 0 0}
-    .ic-search-topic{width: 14px;height: 13px;background-position: 0 -174px;margin: 19px 5px 0 0}
-    .ic-user{width: 13px;height: 15px;background-position: -1px -156px;margin: 18px 3px 0 0}
-    #search-list>button{cursor: pointer; background: #ddd;border: 1px solid #ccc;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;color: #555;
+.ic-document,.ic-search-topic,.ic-user{display: block;float: left;background: url("../images/icon.png") no-repeat}
+.ic-document{width: 19px;height: 15px;background-position: -38px -137px;margin: 17px 7px 0 0}
+.ic-search-topic{width: 14px;height: 13px;background-position: 0 -174px;margin: 19px 5px 0 0}
+.ic-user{width: 13px;height: 15px;background-position: -1px -156px;margin: 18px 3px 0 0}
+#search-list>button{cursor: pointer; background: #ddd;border: 1px solid #ccc;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;color: #555;
     font-size: 11px;padding: 0 7px;line-height: 17px;float: left;margin: 0 2.5% 0 0}
 .bt-follow{background: #f1f1f1;border:1px solid #ddd;color: #555;cursor: pointer;
     width: 135px;height: 18px;font-size: 12px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px}
@@ -70,7 +70,7 @@
 .ic-ppt{background-position: -351px 0}
 .ic-pptx{background-position: -405px 0}
 .ic-setting{background: url("../images/icon.png") no-repeat -22px -84px;width: 24px;height: 23px;display: block;position: absolute;
-            top:0;right: 0;margin: 6px}
+    top:0;right: 0;margin: 6px}
 .ic-edit{cursor: pointer;display:none;background: url("../images/icon.png") no-repeat -166px -157px;width: 16px;height: 16px;margin: 10px; }
 .user-name>div>button{background: #51adee;border: none;color: #fff;padding: 7px 15px 6px 7px;line-height: 20px;float: left;margin: 0 2px 0 0 }
 .topic-follow{background: #51adee;border: none;color: #fff;padding: 7px 21px 6px 20px;line-height: 20px;float: left;margin: 0 2px 0 0;cursor: pointer}
@@ -122,7 +122,7 @@
 .ic-close-popup {background-position: -100px -275px;top: 20px;right: 17px;cursor: pointer}
 .ic-close-popup:hover{background-position:-21px -155px}
 .ic-expand-topic{width: 8px;height: 6px;background: url("../images/icon.png") no-repeat -93px -161px;display: block;position: absolute;
-top: 13px;right: 8px}
+    top: 13px;right: 8px}
 .bt-create-topic{width: 76px;height: 32px;border:1px solid #ddd;background: #edeaea}
 .login-with-facebook{width: 230px;height: 45px;float: left;background: #3b5998;position: relative;color: #fff;line-height: 45px;
     text-align: center;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px}
@@ -177,7 +177,7 @@ top: 13px;right: 8px}
 .ic-onl-next-page:hover{background-position: -79px -58px}
 .ic-onl-prev-page:hover{background-position: -53px -58px}
 .ic-onl-prev-page{width: 26px;height: 46px;background-position: 0 -58px;}
-.ic-one-column,.ic-two-columns{transform: scale(0.8);-moz-transform: scale(0.8);-webkit-transform: scale(0.8);margin:2px 0 4px 0}
+.ic-one-column,.ic-two-columns{transform: scale(0.8);-moz-transform: scale(0.8);-webkit-transform: scale(0.8);margin: 0px 0 2px 0;}
 .ic-one-column {width: 24px;height: 32px;float: left;background-position: 0px -235px;}
 .ic-one-column:hover,.one-column.bt-active .ic-one-column{background-position: -75px -235px}
 .ic-two-columns {background-position: -27px -235px;width: 46px;height: 32px;float: left}

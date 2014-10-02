@@ -404,23 +404,24 @@ header {
 
 .text-action > div {
     width: 100%;
-    padding: 15px 30px;
+    padding: 18px 15px 17px 25px;
     float: left
 }
 
 .text-action label {
-    font-size: 20px;
+    font-size: 18px;
     float: left;
-    margin-right: 19px;
+    margin-right: 15px;
+    width: 55px;
 }
 
 .text-action div.font-style {
     border: solid #d2d0d0;
-    border-width: 1px 0 1px 0
+    border-width: 0 0 1px 0
 }
 
 .text-action div.font-style {
-    padding: 15px 30px 0 30px;
+    padding: 13px 30px 0 30px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box
@@ -430,7 +431,8 @@ header {
     width: 100%;
     float: left;
     list-style: none;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
+    margin-top: 16px;
 }
 
 .text-action div ul li label {
@@ -440,7 +442,7 @@ header {
 
 .text-action div ul li select {
     padding-left: 25px;
-    width: 85%;
+    width: 357px;
     float: left;
     height: 39px;
     background: #fff;
@@ -452,8 +454,7 @@ header {
 }
 
 .text-action div ul li:first-child {
-    margin-top: 15px
-}
+    margin-top: 15px}
 
 .text-action div ul li:first-child div {
     margin: 7px 0 0 5.8%;
@@ -466,72 +467,69 @@ header {
 }
 
 .text-action div ul > li > div:nth-child(1) {
-    width: 56%;
+    width: 62%;
 }
 
 .text-action div ul > li > div:nth-child(2) {
-    width: 44%
-}
+    width: 37%;}
 
-.text-action div ul li div:nth-child(2) > div {
-    width: auto;
-    padding: 0 5px;
-    margin: 0;
-    border: solid #ddd;
-    background: rgb(255, 255, 255);
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(239, 239, 239, 1)));
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColortr='#efefef', GradientType=0);
-}
+/*.text-action div ul li div:nth-child(2) > div {*/
+/*width: auto;*/
+/*padding: 0 5px;*/
+/*margin: 0;*/
+/*border: solid #ddd;*/
+/*background: rgb(255, 255, 255);*/
+/*background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);*/
+/*background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(239, 239, 239, 1)));*/
+/*background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);*/
+/*background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);*/
+/*background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);*/
+/*background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);*/
+/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColortr='#efefef', GradientType=0);*/
+/*}*/
 
-.text-action div ul li div:nth-child(2) > div.one-column {
-    border-width: 1px 0 1px 1px;
-    border-radius: 3px 0 0 3px
-}
+/*.text-action div ul li div:nth-child(2) > div.one-column {*/
+/*border-width: 1px 0 1px 1px;*/
+/*border-radius: 3px 0 0 3px*/
+/*}*/
 
-.text-action div ul li div:nth-child(2) > div.two-columns {
-    border-width: 1px 1px 1px 0;
-    border-radius: 0 3px 3px 0
-}
+/*.text-action div ul li div:nth-child(2) > div.two-columns {*/
+/*border-width: 1px 1px 1px 0;*/
+/*border-radius: 0 3px 3px 0*/
+/*}*/
 
 .text-action div ul li div > label {
     line-height: 39px;
     color: #272727;
-    font-size: 20px;
+    font-size: 17px;
     float: left;
-    margin-right: 26px
-}
+    /* margin-right: 19px; */}
 
-.text-action div ul li div div {
-    height: 39px;
-    color: #272727;
-    width: 70px;
-    float: left;
-    font-size: 20px;
-    margin-right: 15px;
-    text-align: center;
-    line-height: 39px;
-}
+/*.text-action div ul li div div {*/
+/*height: 39px;*/
+/*color: #272727;*/
+/*width: 70px;*/
+/*float: left;*/
+/*font-size: 20px;*/
+/*margin-right: 15px;*/
+/*text-align: center;*/
+/*line-height: 39px;*/
+/*}*/
 
 .text-action div ul li div div.bigger {
     font-size: 30px
 }
 
 .effect div {
-    height: 39px;
-    width: 30%;
-    float: left;
-    text-align: center;
-    line-height: 39px
-}
+    /* height: 39px; */
+    /* width: 30%; */
+    /* float: left; */
+    /* text-align: center; */
+    /* line-height: 39px
+ */}
 
 .effect div:nth-child(2) {
-    margin: 0 4%
-}
+    /* margin: 0 4% */}
 
 .bookmark.bookmarked .ic-onl-bookmark {
     background-position: -132px -123px;
@@ -591,7 +589,7 @@ section#content .book-content {
 }
 
 footer {
-    width: 80%;
+    width: 100%;
     padding: 0 10% 15px 10%;
     position: absolute;
     bottom: 0;
