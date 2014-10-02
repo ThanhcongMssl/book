@@ -45,6 +45,7 @@ define (
             Events.addListener('click', this.$('.decrease-size'), this.handleDecreaseSizeClick, this);
             Events.addListener('change', this.$('.font-family'), this.handleFontStyleChange, this);
             Events.addListener('click', this.$('.background-color'), this.handleBackgroundColorChange, this);
+            Events.addListener('click', this.$('.layout-mode'), this.handleLayoutModeClick, this);
         },
         //endregion
 
@@ -87,6 +88,18 @@ define (
             UserModel.set('backgroundColor', color);
             facade.publish('Font:change-color', {
                 color: color
+            });
+        },
+
+        handleLayoutModeClick : function(e){
+            var $currentTarget = this.$(e.currentTarget),
+                layout = $currentTarget.attr('data-layout');
+            this.$('.layout-mode').removeClass('bt-active');
+            $currentTarget.addClass('bt-active');
+
+            UserModel.set('layout', layout);
+            facade.publish('Layout:change', {
+                layout: layout
             });
         }
         //endregion

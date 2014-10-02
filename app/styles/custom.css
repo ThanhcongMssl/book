@@ -38,6 +38,22 @@ body{
     text-align: center;
 }
 
+.op-add-to-library .add{
+    display: inline;
+}
+
+.op-add-to-library .remove{
+    display: none;
+}
+
+.op-add-to-library.added .add{
+    display: none;
+}
+
+.op-add-to-library.added .remove{
+    display: inline;
+}
+
 .Night{
     color: #fff;
     background: #333;
@@ -172,4 +188,3 @@ label{
     border-color: #222;
     background: #333;
 }
-

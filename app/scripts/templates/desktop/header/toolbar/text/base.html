@@ -30,8 +30,12 @@
                             twoColumn = column == 'two-page' ? 'bt-active' : '';
                     %>
                     <div class="well">
-                        <button class="one-page <%= oneColumn %>"><i class="ic-one-column ic-onl-background"></i></button>
-                        <button class="two-page <%= twoColumn %>"><i class="ic-two-columns ic-onl-background"></i></button>
+                        <button class="layout-mode one-page <%= oneColumn %>" data-layout="one-page">
+                            <i class="ic-one-column ic-onl-background"></i>
+                        </button>
+                        <button class="layout-mode two-page <%= twoColumn %>" data-layout="two-page">
+                            <i class="ic-two-columns ic-onl-background"></i>
+                        </button>
                     </div>
                 </div>
             </li>
