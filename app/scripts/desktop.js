@@ -8,6 +8,10 @@ require.config({
         },
         powerange: {
             exports: 'Powerange'
+        },
+        slimScroll:{
+            exports: 'slimScroll',
+            deps: ['jquery']
         }
     },
     paths: {
@@ -20,7 +24,8 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         text: '../bower_components/requirejs-text/text',
-        powerange: '../bower_components/powerange/dist/powerange.min'
+        powerange: '../bower_components/powerange/dist/powerange.min',
+        slimScroll: 'vendor/slimScroll/jquery.slimscroll.min'
     }
 });
 

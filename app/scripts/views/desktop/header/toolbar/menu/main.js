@@ -8,8 +8,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/user', 'events'],
-    function ($, _, Backbone, facade, baseTemplate, UserModel, Events) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/user', 'events', 'slimScroll'],
+    function ($, _, Backbone, facade, baseTemplate, UserModel, Events, slimScroll) {
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -33,7 +33,9 @@ define(
             },
 
             initComponents: function () {
-
+                this.$('.slim-el').slimScroll({
+                    height: 354
+                });
             },
 
             bindEvents: function () {
