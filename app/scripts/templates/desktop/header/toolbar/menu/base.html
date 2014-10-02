@@ -3,7 +3,13 @@
     <div class="list-book-mark">
         <ul class="slim-el">
             <%
-                for(var i = 0, length = Model.chapters.length; i < length; i++){
+            var length = Model.chapters.length;
+            if(length == 0){
+            %>
+            <p>Không có mục lục cho cuốn sách này.</p>
+            <%
+            } else {
+                for(var i = 0; i < length; i++){
                 var chapter = Model.chapters[i];
             %>
             <li class="chapter-list-item" data-id="<%= chapter.id %>">
@@ -14,6 +20,7 @@
             </li>
             <%
                 }
+            }
             %>
         </ul>
     </div>

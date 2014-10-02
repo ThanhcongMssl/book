@@ -101,6 +101,8 @@ define (
             facade.publish('Layout:change', {
                 layout: layout
             });
+
+            return false;
         }
         //endregion
     });

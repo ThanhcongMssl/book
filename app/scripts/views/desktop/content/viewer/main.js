@@ -18,6 +18,7 @@ define (
             facade.subscribe('Navigation:change', 'change view', this.changeView, this);
             facade.subscribe('Font:change-size', 'change font size', this.changeFontSize, this);
             facade.subscribe('Font:change-style', 'change font style', this.changeFontStyle, this);
+            facade.subscribe('Layout:change', 'change layout', this.changeLayout, this);
 
             this.bindEvents();
 
@@ -29,10 +30,12 @@ define (
         //region Function
         render: function(){
             var template = this.template({
-                HTML: ViewModel.get('HTML')
+                HTML: ViewModel.get('HTML'),
+                layout: UserModel.get('layout')
             });
             this.$el.html(template);
 
+            this.backUpUserModel();
             this.initComponents();
             this.changeView({
                 ID: UserModel.get('currentID')
@@ -51,6 +54,11 @@ define (
         bindEvents: function(){
             Events.addListener('resize', window, this.handleWindowResize, this);
             Events.addListener('click', this.$el, this.handleViewerClick, this);
+        },
+
+        backUpUserModel : function(){
+            this.$el.css('font-size', UserModel.get('fontSize'));
+            this.$el.css('font-family', UserModel.get('fontFamily'));
         },
         //endregion
 
@@ -97,6 +105,13 @@ define (
             var style = options.style;
             this.$el.css('font-family', style);
             this.initComponents();
+        },
+
+        changeLayout : function(){
+            this.initComponents();
+            this.changeView({
+                ID: UserModel.get('currentID')
+            });
         },
 
         translate: function(X){

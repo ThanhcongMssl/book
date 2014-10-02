@@ -153,7 +153,7 @@
     transform:scale(1);-moz-transform:scale(1)}
 
 .ic-onl-bookmark{width: 39px;height: 108px;background-position: -132px -11px;}
-.ic-onl-menu{width: 26px;height: 25px;background-position:-28px 0}
+.ic-onl-menu{width: 26px;height: 25px;background-position:-28px 0;margin-top: 1px;}
 .ic-onl-Aa{width: 41px;height: 26px;background-position: -57px -0px}
 .ic-onl-option{width: 8px;height: 27px;background-position: -99px 0}
 .ic-onl-search{width: 25px;height: 24px;background-position: -82px -105px}
@@ -177,10 +177,10 @@
 .ic-onl-next-page{width: 26px;height: 46px;background-position: -26px -58px;}
 .ic-onl-prev-page{width: 26px;height: 46px;background-position: 0 -58px;}
 .ic-one-column,.ic-two-columns{transform: scale(0.8);-moz-transform: scale(0.8);-webkit-transform: scale(0.8);margin: 0px 0 2px 0;}
-.ic-one-column {width: 24px;height: 32px;float: left;background-position: 0px -235px;}
-.ic-one-column:hover,.one-page.bt-active .ic-one-column{background-position: -75px -235px}
-.ic-two-columns {background-position: -27px -235px;width: 46px;height: 32px;float: left}
-.ic-two-columns:hover,.two-page.bt-active .ic-two-columns{background-position: -101px -235px}
+.ic-one-column {width: 24px;height: 32px;float: left;background-position: 0px -235px;opacity: 0.6;}
+.ic-one-column:hover,.one-page.bt-active .ic-one-column{/* background-position: -75px -235px */opacity: 1;}
+.ic-two-columns {background-position: -27px -235px;width: 46px;height: 32px;float: left;opacity: 0.6;}
+.ic-two-columns:hover,.two-page.bt-active .ic-two-columns{/* background-position: -101px -235px */opacity: 1;}
 
 @media only screen and (max-device-width: 1024px)
 {

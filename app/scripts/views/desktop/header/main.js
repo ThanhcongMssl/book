@@ -45,7 +45,6 @@ define (
             facade.publish('Read:stop');
         }
         //endregion
-
     });
 
     return View;

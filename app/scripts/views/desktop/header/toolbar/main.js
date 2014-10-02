@@ -31,8 +31,8 @@ define (
         },
 
         initComponents : function(){
-            this.addItem(MenuTool);
             this.addItem(TextTool);
+            this.addItem(MenuTool);
             this.addItem(OptionTool);
         },
 

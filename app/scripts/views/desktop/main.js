@@ -9,8 +9,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', 'models/book'],
-    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, BookModel) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', 'models/book', 'models/user'],
+    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, BookModel, UserModel) {
 
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
@@ -27,6 +27,7 @@ define(
                 facade.subscribe('Read:stop', 'stop', this.stopReadMode, this);
                 facade.subscribe('Read:toggle', 'toggle', this.toggleReadMode, this);
                 facade.subscribe('Font:change-color', 'change background color', this.changeBackgroundColor, this);
+                facade.subscribe('Layout:change', 'change layout', this.changeLayout, this);
             },
 
             render: function(){
@@ -34,6 +35,7 @@ define(
                 this.$el.html(template);
 
                 this.initComponents();
+                this.backUpUserModel();
 
                 return this;
             },
@@ -48,6 +50,11 @@ define(
                 new Footer({
                     el: this.$('footer')
                 });
+            },
+
+            backUpUserModel : function(){
+                this.$el.addClass(UserModel.get('layout'));
+                this.$el.addClass(UserModel.get('backgroundColor'));
             },
             //endregion
 
@@ -70,8 +77,14 @@ define(
 
             changeBackgroundColor: function(options){
                 var color = options.color;
-                this.$el.removeClass();
+                this.$el.removeClass('White Sepia Night');
                 this.$el.addClass(color);
+            },
+
+            changeLayout : function(options){
+                var layout = options.layout;
+                this.$el.removeClass('one-page two-page');
+                this.$el.addClass(layout);
             }
             //endregion
         });

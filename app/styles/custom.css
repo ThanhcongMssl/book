@@ -19,12 +19,24 @@ body{
 
 .container{
     height: 100%;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
     -webkit-column-gap: 112px;
     -moz-column-gap: 112px;
     column-gap: 112px;
+}
+
+div#app.one-page .container{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 1px;
+    -moz-column-width: 1px;
+    column-width: 1px;
+}
+
+div#app.two-page .container{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
 }
 
 .container .article{
@@ -61,6 +73,15 @@ body{
     cursor: default;
 }
 
+.list-book-mark{
+    cursor: default;
+}
+
+.list-book-mark p{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 21px;
+}
 
 /* Style */
 
@@ -70,13 +91,13 @@ body{
     padding-bottom: 5px;
 }
 
-.one-page{
+button.one-page{
     float: left;
     margin-top: 1px;
     margin-left: 7px;
 }
 
-.two-page{
+button.two-page{
     float: left;
     margin-top: 1px;
     margin-right: 5px;

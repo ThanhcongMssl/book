@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'text!templates/desktop/footer/base.html', './slider/main', './info/main'],
-    function($, _, Backbone, baseTemplate, SliderView, InfoView){
+    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/desktop/footer/base.html', './slider/main', './info/main'],
+    function($, _, Backbone, facade, Events, baseTemplate, SliderView, InfoView){
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -17,11 +17,13 @@ define (
                 this.render();
             },
 
+            //region Function
             render: function(){
                 var template = this.template();
                 this.$el.html(template);
 
                 this.initComponents();
+                this.bindEvents();
 
                 return this;
             },
@@ -33,7 +35,18 @@ define (
                 new InfoView({
                     el: this.$('.info')
                 });
+            },
+
+            bindEvents : function(){
+                Events.addListener('mouseenter', this.$el, this.handleFooterHover, this);
+            },
+            //endregion
+
+            //region Handle events
+            handleFooterHover: function () {
+                facade.publish('Read:stop');
             }
+            //endregion
         });
 
         return View;
