@@ -51,7 +51,7 @@ define (['backbone', './info', './view', 'utility/date'], function(Backbone, Inf
                 totalPage: ViewModel.getPageById(totalId),
                 percent: percent,
                 title: InfoModel.get('title'),
-                author: InfoModel.get('author')
+                chapter: InfoModel.getChapterById(id).title
             }
         },
 
