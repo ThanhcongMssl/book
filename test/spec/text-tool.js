@@ -7,7 +7,7 @@
  */
 
 /*global define*/
-define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/content/viewer/main', 'views/desktop/content/main'], function(facade, TextTool, Viewer, Content){
+define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/content/viewer/main', 'views/desktop/content/main', 'views/desktop/main'], function(facade, TextTool, Viewer, Content, App){
     describe('Text tool spec', function(){
         describe('Given the facade object', function(){
             describe('Given TextTool, Viewer class', function(){
@@ -15,9 +15,13 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                     beforeEach(function(){
                         spyOn(Viewer.prototype, 'changeFontSize').and.callThrough();
                         spyOn(Viewer.prototype, 'changeFontStyle').and.callThrough();
-                        spyOn(Content.prototype, 'changeBackgroundColor').and.callThrough();
+                        spyOn(App.prototype, 'initialize').and.callFake(function(){
+                            this.subscribe();
+                            this.render();
+                        });
+                        spyOn(App.prototype, 'changeBackgroundColor').and.callThrough();
 
-                        spyOn(TextTool.prototype, 'initialize').and.callFake(function(options){
+                        spyOn(TextTool.prototype, 'initialize').and.callFake(function(){
                             this.render();
                         });
                         spyOn(TextTool.prototype, 'handleIncreaseSizeClick').and.callThrough();
@@ -26,8 +30,12 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                         spyOn(TextTool.prototype, 'handleBackgroundColorChange').and.callThrough();
                         spyOn(facade, 'publish').and.callThrough();
 
-                        new Content();
+                        new App();
                         this.textTool = new TextTool();
+                    });
+
+                    it('Initialize function of App should be called', function(){
+                        expect(App.prototype.initialize).toHaveBeenCalled();
                     });
 
                     it('Initialize function should be called', function(){
@@ -91,6 +99,7 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                     });
 
                     it('Handler should be called when background color change', function(){
+                        facade.publish.calls.reset();
                         this.textTool.$('.background-color[data-color=White]').click();
 
                         expect(TextTool.prototype.handleBackgroundColorChange).toBeDefined();
@@ -101,8 +110,9 @@ define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/cont
                             ['Font:change-color', {color: 'White'}]
                         );
 
-                        expect(Content.prototype.changeBackgroundColor).toBeDefined();
-                        expect(Content.prototype.changeBackgroundColor.calls.mostRecent().args).toEqual(
+                        expect(App.prototype.changeBackgroundColor).toBeDefined();
+                        expect(App.prototype.changeBackgroundColor).toHaveBeenCalled();
+                        expect(App.prototype.changeBackgroundColor.calls.mostRecent().args).toEqual(
                             [{color: 'White'}]
                         );
                     });
