@@ -35,6 +35,7 @@ define (
 
         bindEvents: function () {
             Events.addListener('click', this.$el, this.handleBookmarkClick, this);
+            Events.addListener('mouseenter', this.$el, this.handleBookmarkHover, this);
         },
         //endregion
 
@@ -69,10 +70,12 @@ define (
 
                 this.$el.addClass('bookmarked');
             }
+        },
+
+        handleBookmarkHover: function (e) {
+            e.stopPropagation();
         }
         //endregion
-
-
     });
 
     return View;

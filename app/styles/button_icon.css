@@ -171,20 +171,16 @@
 .ic-onl-google:hover{background-position: -99px -200px}
 .ic-onl-youtube{background-position: 0 -201px}
 .ic-onl-youtube:hover{background-position: -33px -201px}
-.ic-onl-facebook,.ic-onl-google,.ic-onl-twitter,.ic-onl-youtube{width: 33px;height: 33px;float: left;margin-right: 16px}
+.ic-onl-facebook,.ic-onl-google,.ic-onl-twitter,.ic-onl-youtube{width: 33px;height: 32px;float: left;margin-right: 16px}
 #logo{width: 78px;height: 38px;background: url("../images/logo_book_online.png") 0 0 no-repeat;display: block;float: left;margin-top:3px;}
+.ic-onl-next-page,.ic-onl-prev-page{position: relative;top: 50%;transform: translateY(-50%);margin:auto}
 .ic-onl-next-page{width: 26px;height: 46px;background-position: -26px -58px;}
-.ic-onl-next-page:hover{background-position: -79px -58px}
-.ic-onl-prev-page:hover{background-position: -53px -58px}
 .ic-onl-prev-page{width: 26px;height: 46px;background-position: 0 -58px;}
 .ic-one-column,.ic-two-columns{transform: scale(0.8);-moz-transform: scale(0.8);-webkit-transform: scale(0.8);margin: 0px 0 2px 0;}
 .ic-one-column {width: 24px;height: 32px;float: left;background-position: 0px -235px;}
-.ic-one-column:hover,.one-column.bt-active .ic-one-column{background-position: -75px -235px}
+.ic-one-column:hover,.one-page.bt-active .ic-one-column{background-position: -75px -235px}
 .ic-two-columns {background-position: -27px -235px;width: 46px;height: 32px;float: left}
-.ic-two-columns:hover,.two-columns.bt-active .ic-two-columns{background-position: -101px -235px}
-
-
-
+.ic-two-columns:hover,.two-page.bt-active .ic-two-columns{background-position: -101px -235px}
 
 @media only screen and (max-device-width: 1024px)
 {

@@ -15,6 +15,10 @@ require.config({
         },
         powerange: {
             exports: 'Powerange'
+        },
+        slimScroll:{
+            exports: 'slimScroll',
+            deps: ['jquery']
         }
     },
     paths: {
@@ -24,6 +28,7 @@ require.config({
         underscore: '../bower_components/lodash/dist/lodash',
         text: '../bower_components/requirejs-text/text',
         powerange: '../bower_components/powerange/dist/powerange.min',
+        slimScroll: 'vendor/slimScroll/jquery.slimscroll.min',
         facade: 'aura/facade',
         mediator: 'aura/mediator',
         permissions: 'aura/permissions',

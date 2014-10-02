@@ -16,14 +16,19 @@ define(
             template: _.template(baseTemplate),
 
             initialize: function () {
-                facade.subscribe('BookModel:fetch-data-successed', 'render', this.render, this);
-                facade.subscribe('Read:start', 'hidden', this.startReadMode, this);
-                facade.subscribe('Read:stop', 'hidden', this.stopReadMode, this);
-
+                this.subscribe();
                 BookModel.fetchData();
             },
 
             //region Function
+            subscribe: function(){
+                facade.subscribe('BookModel:fetch-data-successed', 'render', this.render, this);
+                facade.subscribe('Read:start', 'start', this.startReadMode, this);
+                facade.subscribe('Read:stop', 'stop', this.stopReadMode, this);
+                facade.subscribe('Read:toggle', 'toggle', this.toggleReadMode, this);
+                facade.subscribe('Font:change-color', 'change background color', this.changeBackgroundColor, this);
+            },
+
             render: function(){
                 var template = this.template();
                 this.$el.html(template);
@@ -53,6 +58,20 @@ define(
 
             stopReadMode : function(){
                 this.$el.removeClass('read');
+            },
+
+            toggleReadMode : function(){
+                if(this.$el.hasClass('read')){
+                    this.$el.removeClass('read');
+                } else {
+                    this.$el.addClass('read');
+                }
+            },
+
+            changeBackgroundColor: function(options){
+                var color = options.color;
+                this.$el.removeClass();
+                this.$el.addClass(color);
             }
             //endregion
         });

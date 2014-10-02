@@ -63,7 +63,10 @@ define (
         },
 
         handleViewerClick : function(){
-            facade.publish('Read:start');
+            var sel = getSelection().toString();
+            if (!sel){
+                facade.publish('Read:toggle');
+            }
         },
         //endregion
 

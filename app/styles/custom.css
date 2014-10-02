@@ -54,21 +54,6 @@ body{
     display: inline;
 }
 
-.Night{
-    color: #fff;
-    background: #333;
-}
-
-.Sepia{
-    color: #272727;
-    background: #f9f3e4;
-}
-
-.White{
-    color:
-        background: #fff;
-}
-
 .range-handle{
     width: 20px;
     height: 20px;
@@ -124,6 +109,7 @@ body{
 
 .effect label{
     line-height: 35px;
+    color: #272727;
 }
 
 /* Bootstrap custom */
