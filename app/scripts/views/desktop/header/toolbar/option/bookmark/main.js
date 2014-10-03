@@ -15,6 +15,7 @@ define (
 
         initialize : function(){
             facade.subscribe('Viewer:resize', 'render', this.render, this);
+            facade.subscribe('Bookmark:change', 'render', this.render, this);
         },
 
         //region Fucntion

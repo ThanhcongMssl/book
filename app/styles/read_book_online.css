@@ -377,7 +377,7 @@ header {
 }
 
 .list-book-mark ul li, .list-mark-up ul li {
-    padding: 12px 0;
+    padding: 12px 10px 12px 0;
     border-bottom: 1px solid #ddd
 }
 
@@ -542,7 +542,7 @@ header {
 }
 
 .bookmark.bookmarked {
-    top: -13px
+    top: -21px
 }
 
 .bookmark {

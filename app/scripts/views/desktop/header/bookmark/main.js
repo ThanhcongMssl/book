@@ -63,13 +63,14 @@ define (
                 bookmark = {};
                 bookmark.id = id;
                 bookmark.title = chapter.title;
-                bookmark.date = DateFormat.format(new Date());
+                bookmark.date = DateFormat.format(new Date(), 'server');
                 bookmarks.push(bookmark);
                 UserModel.set('bookmark', bookmarks);
                 UserModel.trigger('change:bookmark');
 
                 this.$el.addClass('bookmarked');
             }
+            facade.publish('Bookmark:change');
         },
 
         handleBookmarkHover: function (e) {
