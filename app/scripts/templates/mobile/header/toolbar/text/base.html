@@ -1,0 +1,50 @@
+<i class="ic-text ic-background"></i>
+<ul>
+    <li>
+        <div class="text-action">
+            <div class="font-style">
+                <ul>
+                    <li>
+                        <label>Phông</label>
+                        <div>
+                            <select class="font-family form-control">
+                                <%
+                                var font = ['Arial', 'Times New Roman', 'Georgia'];
+                                for(var i = 0, length = font.length; i < length; i++){
+                                var selected = font[i] == Model.fontStyle ? 'selected' : '';
+                                %>
+                                <option value="<%= font[i] %>" <%= selected %>><%= font[i] %></option>
+                                <%
+                                }
+                                %>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <label>Kích cỡ</label>
+                            <div class="font-size">
+                                <button type="button" class="btn btn-default decrease-size">A</button>
+                                <button type="button" class="btn btn-default increase-size bigger">A</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="effect">
+                <%
+                var color = Model.color,
+                white = color == 'White' ? 'active' : '',
+                sepia = color == 'Sepia' ? 'active' : '',
+                night = color == 'Night' ? 'active' : '';
+                %>
+                <div>
+                    <button class="btn btn-default background-color <%= white %>" data-color="White">White</button>
+                    <button class="btn btn-warning btn-sepia background-color <%= sepia %>" data-color="Sepia">Sepia</button>
+                    <button class="btn btn-info btn-night background-color <%= night %>" data-color="Night">Night</button>
+                </div>
+
+            </div>
+        </div>
+    </li>
+</ul>

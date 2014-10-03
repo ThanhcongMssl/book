@@ -1,0 +1,200 @@
+/**
+ * Created with WebStorm.
+ * Name: custom.css
+ * User: ThànhCông
+ * Date: 9/30/2014
+ * Time: 11:21 PM
+ */
+
+.hidden{
+    display: none !important;
+}
+
+body{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container{
+    height: 100%;
+    -webkit-column-gap: 112px;
+    -moz-column-gap: 112px;
+    column-gap: 112px;
+}
+
+div#app.one-page .container{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 1px;
+    -moz-column-width: 1px;
+    column-width: 1px;
+}
+
+div#app.two-page .container{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+.container .article{
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.tooltip{
+    text-align: center;
+}
+
+.op-add-to-library .add{
+    display: inline;
+}
+
+.op-add-to-library .remove{
+    display: none;
+}
+
+.op-add-to-library.added .add{
+    display: none;
+}
+
+.op-add-to-library.added .remove{
+    display: inline;
+}
+
+.range-handle{
+    width: 20px;
+    height: 20px;
+    top: -9px;
+    cursor: default;
+}
+
+.range-max{
+    width: 0;
+}
+
+.list-book-mark{
+    cursor: default;
+}
+
+.list-book-mark p{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 21px;
+}
+
+/* Style */
+
+.text-action div.font-style{
+    /* padding-left: 25px; */
+    /* padding-right: 15px; */
+    padding-bottom: 5px;
+}
+
+button.one-page{
+    float: left;
+    margin-top: 1px;
+    margin-left: 7px;
+}
+
+button.two-page{
+    float: left;
+    margin-top: 1px;
+    margin-right: 5px;
+    margin-left: 7px;
+}
+
+.increase-size, .decrease-size{
+    height: 2.5rem;  color: #272727;  width: 45%;  float: left;  font-size: 1.3rem;  text-align: center;
+}
+.font-size button.bigger{font-size:2.3rem;margin-left:10%}
+.increase-size {
+    margin-left: 8px;
+    font-size: 21px;
+    line-height: 21px;
+}
+
+.decrease-size {
+    font-size: 16px;
+}
+
+.background-color {
+    width: 86px;
+    float: left;
+}
+
+.layout label{
+    margin-right: 8px;
+}
+
+.effect label{
+    line-height: 35px;
+    color: #272727;
+}
+
+/* Bootstrap custom */
+
+.form-control{
+    border-radius: 0;
+}
+
+label{
+    font-weight: normal;
+}
+
+.well{
+    padding: 1px 5px;
+    border-radius: 0;
+}
+
+.btn-sepia{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #f0e8d1;
+}
+.btn-sepia:hover {
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+.btn-sepia:active{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+.btn-sepia.active{
+    color: #787878;
+    border-color: #d4c7a2;
+    background: #e8dfc6;
+}
+
+/* night */
+
+.btn-night{
+    color: #fff;
+    border-color: #222;
+    background: #555;
+}
+.btn-night:hover {
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}
+
+.btn-night:active{
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}
+
+.btn-night.active{
+    color: #fff;
+    border-color: #222;
+    background: #333;
+}

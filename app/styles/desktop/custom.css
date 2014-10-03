@@ -6,10 +6,6 @@
  * Time: 11:21 PM
  */
 
-.hidden{
-    display: none !important;
-}
-
 body{
     -webkit-user-select: none;
     -moz-user-select: none;

@@ -23,6 +23,7 @@ define (
         fetchData: function(number, location){
             number = number || 1;
             location = location || false;
+            facade.publish('Ajax:loading');
             Backbone.ajax({
                 url: '/data/' + number + '.html',
                 data: {
@@ -40,6 +41,7 @@ define (
                 HTML: response
             });
             facade.publish('ViewModel:fetch-data-successed');
+            facade.publish('Ajax:loaded');
         },
 
         handleRequestPart : function(options){

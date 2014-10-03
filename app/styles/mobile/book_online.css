@@ -1,0 +1,655 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    font-size: 13px;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #272727
+}
+
+div {
+    display: block;
+}
+
+ul, li {
+    list-style: none
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none
+}
+
+.box-sizing {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+.border-radius {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+header {
+    width: 100%;
+    height: 9%;
+    background: #0ea8e8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 2%;
+    z-index: 25
+}
+
+.header-left, .header-right {
+    height: 100%
+}
+
+.header-left {
+    float: left
+}
+
+.header-right {
+    float: right
+}
+
+.ic-background {
+    background: url(../../images/mobile-icon.png);
+    display: block;
+    float: left
+}
+
+.ic-onl-back {
+    width: 16px;
+    height: 28px;
+    background-position: -117px -109px;
+    margin-right: 0.6rem
+}
+
+.ic-list {
+    width: 22px;
+    height: 16px;
+    background-position: -137px -195px;
+    margin-left: 8px;
+}
+
+.header-right > ul {
+    float: left;
+    height: 100%
+}
+
+.header-right > ul > li {
+    float: left;
+    height: 100%;
+    list-style: none
+}
+
+.ic-search {
+    width: 24px;
+    height: 24px;
+    background-position: -230px -187px
+}
+
+.ic-text {
+    width: 29px;
+    height: 20px;
+    background-position: -256px -190px;
+    margin: 0 0 0 20px
+}
+
+.ic-share {
+    width: 24px;
+    height: 20px;
+    background-position: -259px -170px;
+    margin: 0 0 0 16px
+}
+
+.ic-onl-back, .ic-list, .ic-search, .ic-text, .ic-share {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ic-onl-back:active, .ic-list:active, .ic-search:active, .ic-text:active, .ic-search:active, .ic-share:active {
+    opacity: 0.6
+}
+
+.header-right > ul > li > ul {
+    display: none
+}
+
+.header-right > ul > li:hover > ul {
+    display: block
+}
+
+.header-right > ul > li > ul > li {
+    width: 100%
+}
+
+.button-transition {
+    text-shadow: none !important;
+    cursor: pointer;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -ms-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.bt-night {
+    border: 1px solid #222;
+    background: #222;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3 pxp;
+    color: #fff
+}
+
+.bt-night:active, .bt-night.bt-active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: #333;
+}
+
+.bt-sepia {
+    border: 1px solid #ccc;
+    background: #f9f3e4;
+    background: -moz-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #f9f3e4), color-stop(100%, #f0e8d1));
+    background: -webkit-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -o-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: -ms-linear-gradient(top, #f9f3e4 30%, #f0e8d1 100%);
+    background: linear-gradient(to bottom, #f9f3e4 30%, #f0e8d1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f3e4', endColorstr='#f0e8d1', GradientType=0);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.bt-sepia:active, .bt-sepia.bt-active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: #f9f3e4;
+}
+
+.bt-white {
+    border: 1px solid #ddd;
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(239, 239, 239, 1)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(239, 239, 239, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColortr='#efefef', GradientType=0);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.bt-white:active, .bt-white.bt-active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: #fafafa;
+}
+
+.text-action {
+    position: absolute;
+    z-index: 200;
+    top: 100%;
+    left: 0;
+    background: #edf0f0;
+    width: 100%
+}
+
+.text-action > div {
+    width: 100%;
+    padding: 1.2rem 5%;
+    float: left
+}
+
+.text-action label {
+    font-size: 1.2rem;
+    float: left;
+    line-height: 2.5rem;
+    width: 18%;
+}
+
+.text-action div.font-style {
+    padding: 1.2rem 5% 0 5%;
+    border-bottom: 1px solid #d2d0d0;
+}
+
+.text-action div ul li {
+    width: 100%;
+    float: left;
+    list-style: none;
+    margin-bottom: 1.5rem
+}
+
+.text-action div ul li div {
+    overflow: hidden
+}
+
+.text-action div ul li select {
+    height: 2.5rem;
+    background: #fff;
+    outline: none;
+    color: #272727;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    width: 100%;}
+
+.font-size div {
+    height: 2.5rem;
+    color: #272727;
+    width: 45%;
+    float: left;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 2.3rem
+}
+
+.font-size div.bigger {
+    font-size: 2.3rem;
+    margin-left: 10%
+}
+
+.effect button {
+    height: 2.5rem;
+    width: 30%;
+    float: left;
+    text-align: center;
+}
+
+.effect button:nth-child(2) {
+    margin: 0 5%;}
+
+section#menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background: #f1f1f1;
+    display: none;
+    box-sizing: border-box
+}
+
+section#menu.visible {
+    display: block
+}
+
+.menu-tab {
+    position: absolute;
+    top: 0;
+    height: 9%;
+    overflow: hidden;
+    width: 100%;
+    top: 9%
+}
+
+.menu-tab span {
+    float: left;
+    text-align: center;
+    width: 50%;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #fff;
+    background: #048ec7;
+    height: 100%;
+    line-height: 400%
+}
+
+.menu-tab span.active {
+    background: #037eb1
+}
+
+.menu-content {
+    width: 89%;
+    padding: 0 5.5%;
+    position: absolute;
+    top: 18%;
+    height: 82%;
+    overflow: auto
+}
+
+.menu-content ul {
+    width: 100%;
+    float: left;
+    display: none
+}
+
+.menu-content ul.visible, section#menu.visible {
+    display: block
+}
+
+.menu-content ul li {
+    list-style: none;
+    border-bottom: 1px solid #d7d6d6;
+    padding: 1.5rem 0;
+    font-size: 1.3rem
+}
+
+.menu-content ul li span:nth-child(1) {
+    width: 70%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.menu-content ul li span:nth-child(2) {
+    float: right;
+    color: #d1361f
+}
+
+.menu-content ul li span.date {
+    float: left;
+    color: #737373;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 0.3rem
+}
+
+section#content {
+    z-index: 1;
+    position: absolute;
+    font-size: 24px;
+    line-height: 150%;
+    overflow: hidden;
+    width: 100%;
+    padding: 7% 5% 13% 5%;
+    height: 100%;
+    color: #272727
+}
+
+section#content .container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+}
+
+.bookmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 8
+}
+
+.bookmark .bt-bookmark {
+    background: transparent
+}
+
+.ic-bookmark, .White .ic-bookmark {
+    display: block;
+    background-image: url("../../images/ic_bookmark.png");
+    background-position: -47px 0;
+    width: 46px;
+    height: 47px;
+    tansform: scale(0.8)
+}
+
+.Sepia .ic-bookmark {
+    background-position: -94px 0
+}
+
+.Night .ic-bookmark {
+    background-position: 0 0
+}
+
+#prev-page, #next-page {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    z-index: 3
+}
+
+#prev-page {
+    left: 0
+}
+
+#next-page {
+    right: 0
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 68px;
+    background: #dee0e0;
+    width: 100%;
+    padding: 1.5rem 2%;
+    z-index: 2
+}
+
+.tooltip {
+    background: #949494;
+    padding: 0.6rem;
+    width: 40%;
+    position: absolute;
+    bottom: 100%;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.tooltip .tooltip-arrow {
+    width: 0;
+    height: 0;
+    border: 10px solid;
+    border-color: #949494 transparent transparent transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -20px
+}
+
+#location-chapter, #location-percent {
+    width: 100%;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+#location-percent {
+    text-align: center
+}
+
+.footer-info {
+    width: 100%;
+    float: left;
+    margin-top: 1rem
+}
+
+.footer-info > div {
+    color: #747473;
+    font-size: 1rem;
+    float: left
+}
+
+.footer-info > div.per {
+    float: right
+}
+
+.read header, .read footer {
+    display: none
+}
+
+.Sepia.read #content, .Sepia.read footer {
+    background: #f0e8d1
+}
+
+.White.read header, .White.read #content, .White.read footer {
+    background: #fff
+}
+
+.Night.read header, .Night.read #content, .Night.read footer {
+    background: #444;
+    color: #fff
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    display: block
+}
+
+.loading-overlay.hidden {
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#facebookG {
+    width: 60px;
+    height: 45px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: fixed;
+    z-index: 1200
+}
+
+.facebook_blockG {
+    background-color: #0ea8e8;
+    border: 1px solid #1682AD;
+    float: left;
+    height: 43px;
+    margin-left: 3px;
+    width: 11px;
+    opacity: 0.1;
+    -moz-animation-name: bounceG;
+    -moz-animation-duration: 1.1s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -moz-transform: scale(0.7);
+    -webkit-animation-name: bounceG;
+    -webkit-animation-duration: 1.1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -webkit-transform: scale(0.7);
+    -ms-animation-name: bounceG;
+    -ms-animation-duration: 1.1s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -ms-transform: scale(0.7);
+    -o-animation-name: bounceG;
+    -o-animation-duration: 1.1s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    -o-transform: scale(0.7);
+    animation-name: bounceG;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+    transform: scale(0.7);
+}
+
+#blockG_1 {
+    -moz-animation-delay: 0.33s;
+    -webkit-animation-delay: 0.33s;
+    -ms-animation-delay: 0.33s;
+    -o-animation-delay: 0.33s;
+    animation-delay: 0.33s;
+}
+
+#blockG_2 {
+    -moz-animation-delay: 0.44000000000000006s;
+    -webkit-animation-delay: 0.44000000000000006s;
+    -ms-animation-delay: 0.44000000000000006s;
+    -o-animation-delay: 0.44000000000000006s;
+    animation-delay: 0.44000000000000006s;
+}
+
+#blockG_3 {
+    -moz-animation-delay: 0.55s;
+    -webkit-animation-delay: 0.55s;
+    -ms-animation-delay: 0.55s;
+    -o-animation-delay: 0.55s;
+    animation-delay: 0.55s;
+}
+
+@-moz-keyframes bounceG {
+    0% {
+        -moz-transform: scale(1.2);
+        opacity: 1
+    }
+
+    100% {
+        -moz-transform: scale(0.7);
+        opacity: 0.1
+    }
+
+}
+
+@-webkit-keyframes bounceG {
+    0% {
+        -webkit-transform: scale(1.2);
+        opacity: 1
+    }
+
+    100% {
+        -webkit-transform: scale(0.7);
+        opacity: 0.1
+    }
+
+}
+
+@-ms-keyframes bounceG {
+    0% {
+        -ms-transform: scale(1.2);
+        opacity: 1
+    }
+
+    100% {
+        -ms-transform: scale(0.7);
+        opacity: 0.1
+    }
+
+}
+
+@-o-keyframes bounceG {
+    0% {
+        -o-transform: scale(1.2);
+        opacity: 1
+    }
+
+    100% {
+        -o-transform: scale(0.7);
+        opacity: 0.1
+    }
+
+}
+
+@keyframes bounceG {
+    0% {
+        transform: scale(1.2);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(0.7);
+        opacity: 0.1
+    }
+}

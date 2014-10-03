@@ -6,7 +6,7 @@
 html, body {
     height: 100%;
     min-width: 980px;
-    min-height: 20rem
+    min-height: 410px
 }
 
 body {
@@ -389,7 +389,8 @@ header {
     background: #fff;
     overflow: auto;
     top: 0;
-    padding: 0px 14px
+    padding: 0px 14px;
+    cursor: default;
 }
 
 .list-social > li {
@@ -734,7 +735,7 @@ header, footer {
 }
 
 .read #logo {
-    background: url("../images/logo_book_online.png") no-repeat -79px 0
+    background: url("../../images/logo_book_online.png") no-repeat -79px 0
 }
 
 .read .ic-onl-back {
@@ -754,5 +755,51 @@ div#app.White {
 div#app.Night {
     background: #000;
     color: #fafafa
+}
+
+div#app.one-page header {
+    padding: 9px 20%
+}
+
+div#app.one-page section#content {
+    padding: 0 20%
+}
+
+div#app.one-page footer {
+    padding: 0 20% 15px 20%
+}
+
+div#app.one-page #next-page, div#app.one-page #prev-page {
+    width: 20%
+}
+
+div#app.one-page .ic-onl-prev-page {
+    left: 85%;
+    margin-left: -26px;
+}
+
+div#app.one-page .ic-onl-next-page {
+    left: 15%;
+    margin: 0
+}
+
+header, section#content, footer {
+    min-width: 1000px
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+}
+
+.loading-overlay.off {
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 

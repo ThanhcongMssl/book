@@ -9,8 +9,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', 'models/book', 'models/user'],
-    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, BookModel, UserModel) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', './popup/main', 'models/book', 'models/user'],
+    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, Popup, BookModel, UserModel) {
 
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
@@ -28,6 +28,8 @@ define(
                 facade.subscribe('Read:toggle', 'toggle', this.toggleReadMode, this);
                 facade.subscribe('Font:change-color', 'change background color', this.changeBackgroundColor, this);
                 facade.subscribe('Layout:change', 'change layout', this.changeLayout, this);
+                facade.subscribe('Ajax:loading', 'show loading', this.showLoading, this);
+                facade.subscribe('Ajax:loaded', 'hide loading', this.hideLoading, this);
             },
 
             render: function(){
@@ -49,6 +51,9 @@ define(
                 });
                 new Footer({
                     el: this.$('footer')
+                });
+                new Popup({
+                    el: this.$('#popup')
                 });
             },
 
@@ -85,6 +90,14 @@ define(
                 var layout = options.layout;
                 this.$el.removeClass('one-page two-page');
                 this.$el.addClass(layout);
+            },
+
+            showLoading : function(){
+                this.$('#loading').removeClass('off');
+            },
+
+            hideLoading: function(){
+                this.$('#loading').addClass('off');
             }
             //endregion
         });
