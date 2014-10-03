@@ -25,6 +25,7 @@ define(
                     }
                 });
                 this.$el.html(template);
+                this.$el.addClass('menu');
 
                 this.initComponents();
                 this.bindEvents();

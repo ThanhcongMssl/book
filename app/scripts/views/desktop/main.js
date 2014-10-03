@@ -9,8 +9,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', './popup/main', 'models/book', 'models/user'],
-    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, Popup, BookModel, UserModel) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/base.html', './header/main', './footer/main', './content/main', './popup/main', 'models/book', 'models/user', 'utility/keyboard'],
+    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, Popup, BookModel, UserModel, Keyboard) {
 
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
@@ -38,6 +38,7 @@ define(
 
                 this.initComponents();
                 this.backUpUserModel();
+                this.bindEvents();
 
                 return this;
             },
@@ -60,6 +61,10 @@ define(
             backUpUserModel : function(){
                 this.$el.addClass(UserModel.get('layout'));
                 this.$el.addClass(UserModel.get('backgroundColor'));
+            },
+
+            bindEvents: function(){
+
             },
             //endregion
 
@@ -99,6 +104,10 @@ define(
             hideLoading: function(){
                 this.$('#loading').addClass('off');
             }
+            //endregion
+
+            //region Handle events
+
             //endregion
         });
 

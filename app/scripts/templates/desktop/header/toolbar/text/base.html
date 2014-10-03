@@ -1,4 +1,4 @@
-<i class="ic-onl-Aa ic-onl-background"></i>
+<i class="ic-onl-Aa ic-onl-background" title="Hiển thị"></i>
 <div class="text-action">
     <div class="font-style">
         <ul>
@@ -19,8 +19,8 @@
             <li>
                 <div>
                     <label>Kích cỡ</label>
-                    <button type="button" class="btn btn-default decrease-size">A</button>
-                    <button type="button" class="btn btn-default increase-size bigger">A</button>
+                    <button type="button" class="btn btn-default decrease-size" title="Giảm (Ctrl -)">A</button>
+                    <button type="button" class="btn btn-default increase-size bigger" title="Tăng (Ctrl +)">A</button>
                 </div>
                 <div class="layout">
                     <label>Bố cục</label>
@@ -31,10 +31,10 @@
                     %>
                     <div class="well">
                         <button class="layout-mode one-page <%= oneColumn %>" data-layout="one-page">
-                            <i class="ic-one-column ic-onl-background"></i>
+                            <i class="ic-one-column ic-onl-background" title="Một trang"></i>
                         </button>
                         <button class="layout-mode two-page <%= twoColumn %>" data-layout="two-page">
-                            <i class="ic-two-columns ic-onl-background"></i>
+                            <i class="ic-two-columns ic-onl-background" title="Hai trang"></i>
                         </button>
                     </div>
                 </div>
@@ -50,9 +50,9 @@
         night = color == 'Night' ? 'active' : '';
         %>
         <div>
-            <button class="btn btn-default background-color <%= white %>" data-color="White">White</button>
-            <button class="btn btn-warning btn-sepia background-color <%= sepia %>" data-color="Sepia">Sepia</button>
-            <button class="btn btn-info btn-night background-color <%= night %>" data-color="Night">Night</button>
+            <button class="btn btn-default background-color <%= white %>" data-color="White" title="Trắng">White</button>
+            <button class="btn btn-warning btn-sepia background-color <%= sepia %>" data-color="Sepia" title="Gỗ">Sepia</button>
+            <button class="btn btn-info btn-night background-color <%= night %>" data-color="Night" title="Ban đêm">Night</button>
         </div>
 
     </div>
