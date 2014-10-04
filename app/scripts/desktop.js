@@ -3,6 +3,12 @@
 
 require.config({
     shim: {
+        jquery: {
+            exports: '$'
+        },
+        underscore: {
+            exports: '_'
+        },
         backbone:{
             exports: 'Backbone'
         },

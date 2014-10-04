@@ -47,6 +47,7 @@ define (
         initComponents: function(){
             this.resizeImage();
             ViewModel.set('idPerPage', this.calculateIdPerPage());
+            console.log(ViewModel.get('idPerPage'));
             ViewModel.set('pageNumberOfParts', this.calculatePageNumberOfParts());
             facade.publish('Viewer:resize');
         },
@@ -134,15 +135,27 @@ define (
         },
 
         calculateIdPerPage : function(){
-            var viewerHeight = this.$el.height(),
-                articleHeight = this.$('.article').height(),
+            var $container = this.$('.container'),
+                $article = this.$('.article'),
+                column = $container.css('column-count'),
                 idInPart = InfoModel.getIdInPart(UserModel.get('currentPart'));
 
-            var column = this.$('.container').css('column-count');
             ViewModel.set('column', column);
-            viewerHeight *= column;
 
-            return Math.floor((viewerHeight / articleHeight) * idInPart);
+            if(ViewModel.get('isWebkit')){
+                var viewerHeight = this.$el.height(),
+                    articleHeight = $article.height();
+
+                viewerHeight *= column;
+
+                return Math.floor((viewerHeight / articleHeight) * idInPart);
+            }
+            else{
+                var viewerWidth = this.$el.width(),
+                    articleWidth = $article.width() + parseInt($container.css('column-gap'));
+
+                return Math.floor((viewerWidth / articleWidth) * idInPart / 2);
+            }
         },
 
         calculatePageNumberOfParts: function(){
