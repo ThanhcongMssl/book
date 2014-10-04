@@ -38,7 +38,7 @@ define (
             },
 
             bindEvents : function(){
-                Events.addListener('mouseenter', this.$el, this.handleFooterHover, this);
+                //Events.addListener('mouseenter', this.$el, this.handleFooterHover, this);
             },
             //endregion
 

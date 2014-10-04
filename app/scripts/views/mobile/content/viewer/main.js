@@ -19,6 +19,9 @@ define (
             facade.subscribe('Font:change-size', 'change font size', this.changeFontSize, this);
             facade.subscribe('Font:change-style', 'change font style', this.changeFontStyle, this);
             facade.subscribe('Layout:change', 'change layout', this.changeLayout, this);
+            facade.subscribe('Pan:start', 'save transform', this.startTranslate, this);
+            facade.subscribe('Pan:move', 'move transform', this.moveTranslate, this);
+            facade.subscribe('Pan:end', 'move transform', this.endTranslate, this);
 
             this.bindEvents();
 
@@ -52,7 +55,7 @@ define (
         },
 
         bindEvents: function(){
-            Events.addListener('resize', window, this.handleWindowResize, this);
+            //Events.addListener('resize', window, this.handleWindowResize, this);
             Events.addListener('click', this.$el, this.handleViewerClick, this);
         },
 
@@ -114,6 +117,19 @@ define (
             });
         },
 
+        startTranslate: function(){
+            this.__translateX = new WebKitCSSMatrix(this.$('.container').css('transform')).e;
+            this.$('.container').removeClass('transition');
+        },
+
+        moveTranslate: function(options){
+            this.translateX(this.__translateX + options.x * 0.6);
+        },
+
+        endTranslate : function(){
+            this.$('.container').addClass('transition');
+        },
+
         translate: function(X){
             var $container = this.$('.container'),
                 translateX = -(this.$el.width() + parseInt($container.css('column-gap'))) * X;
@@ -121,6 +137,14 @@ define (
                 "transform": "translate(" + translateX + "px,0px)",
                 "-ms-transform": "translate(" + translateX + "px,0px)",
                 "-webkit-transform": "translate(" + translateX + "px,0px)"
+            });
+        },
+
+        translateX: function(x){
+            this.$('.container').css({
+                "transform": "translate(" + x + "px,0px)",
+                "-ms-transform": "translate(" + x + "px,0px)",
+                "-webkit-transform": "translate(" + x + "px,0px)"
             });
         },
 

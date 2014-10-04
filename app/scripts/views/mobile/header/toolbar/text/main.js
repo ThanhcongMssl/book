@@ -43,7 +43,7 @@ define (
             Events.addListener('click', this.$('.text-action'), this.handleTextActionClick, this);
             Events.addListener('click', this.$('.increase-size'), this.handleIncreaseSizeClick, this);
             Events.addListener('click', this.$('.decrease-size'), this.handleDecreaseSizeClick, this);
-            Events.addListener('change', this.$('.font-family'), this.handleFontStyleChange, this);
+            Events.addListener('change', this.$('.font-family'), this.handleFontStyleChange, this, true);
             Events.addListener('click', this.$('.background-color'), this.handleBackgroundColorChange, this);
             Events.addListener('click', this.$('.layout-mode'), this.handleLayoutModeClick, this);
         },

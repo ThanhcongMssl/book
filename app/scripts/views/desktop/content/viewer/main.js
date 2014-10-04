@@ -47,7 +47,6 @@ define (
         initComponents: function(){
             this.resizeImage();
             ViewModel.set('idPerPage', this.calculateIdPerPage());
-            console.log(ViewModel.get('idPerPage'));
             ViewModel.set('pageNumberOfParts', this.calculatePageNumberOfParts());
             facade.publish('Viewer:resize');
         },

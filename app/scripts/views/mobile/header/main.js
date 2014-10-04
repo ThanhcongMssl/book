@@ -34,7 +34,7 @@ define (
         },
 
         bindEvents : function(){
-            Events.addListener('mouseenter', this.$el, this.handleHeaderHover, this);
+            //Events.addListener('mouseenter', this.$el, this.handleHeaderHover, this);
             Events.addListener('click', this.$('.menu-toggle'), this.handleMenuToggle, this);
         },
 

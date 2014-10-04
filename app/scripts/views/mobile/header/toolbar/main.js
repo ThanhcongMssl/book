@@ -64,7 +64,7 @@ define (
                 $currentTarget.addClass('visible');
                 facade.publish('Toolbar:open');
             }
-        },
+        }
 
         //endregion
 

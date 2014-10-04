@@ -19,9 +19,12 @@ body{
 
 .container{
     height: 100%;
-    -webkit-column-gap: 112px;
-    -moz-column-gap: 112px;
-    column-gap: 112px;
+    -webkit-column-gap: 60px;
+    -moz-column-gap: 60px;
+    column-gap: 60px;
+}
+
+.container.transition{
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
 }
@@ -52,6 +55,7 @@ div#app.two-page .container{
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+    text-align: justify;
 }
 
 .tooltip{

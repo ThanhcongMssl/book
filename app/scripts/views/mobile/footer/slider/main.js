@@ -31,8 +31,8 @@ define (
         },
 
         bindEvents : function(){
-            Events.addListener('mousedown', this.$('.range-handle'), this.handleSliderMouseDown, this);
-            Events.addListener('mouseup', document, this.handleDocumentMouseUp, this);
+            Events.addListener('panstart', this.$('.range-handle'), this.handleSliderMouseDown, this);
+            Events.addListener('panend', this.$('.range-handle'), this.handleDocumentMouseUp, this);
         },
 
         initComponents: function(){

@@ -35,6 +35,11 @@ define (
                 Events.addListener('click', this.$('.next'), this.handleNextButtonClick, this);
                 Events.addListener('click', this.$('.prev'), this.handlePrevButtonClick, this);
                 Events.addListener('click', this.$('.overlay'), this.handleOverlayClick, this);
+                //Events.addListener('swipeleft', this.$el, this.handleNextButtonClick, this);
+                //Events.addListener('swiperight', this.$el, this.handlePrevButtonClick, this);
+                Events.addListener('panstart', this.$el, this.handleContentPanStart, this);
+                Events.addListener('panmove', this.$el, this.handleContentPanMove, this);
+                Events.addListener('panend', this.$el, this.handleContentPanEnd, this);
             },
 
             initComponents: function(){
@@ -79,6 +84,32 @@ define (
 
             handleOverlayClick : function(){
                 facade.publish('Toolbar:close');
+            },
+
+            handleContentPanStart : function(){
+                facade.publish('Pan:start');
+            },
+
+            handleContentPanMove : function(e, gesture){
+                facade.publish('Pan:move', {
+                    x: gesture.deltaX
+                });
+            },
+
+            handleContentPanEnd : function(e, gesture){
+                var x = gesture.deltaX;
+                facade.publish('Pan:end');
+                if (Math.abs(x) > 60){
+                    if (x > 0){
+                        this.handlePrevButtonClick();
+                    } else {
+                        this.handleNextButtonClick();
+                    }
+                } else {
+                    facade.publish('Navigation:change', {
+                        ID: UserModel.get('currentID')
+                    });
+                }
             }
             //endregion
         });

@@ -50,6 +50,15 @@ define(
                 var part = options.part;
                 this.fetchData(part, true);
             },
+            //endregion
+
+            //region Method
+            getPageById: function (id) {
+                var part = InfoModel.getPartById(id),
+                    page = Math.ceil((id - InfoModel.get('part')[part - 1]) / this.get('idPerPage') + 0.001);
+
+                return this.get('pageNumberOfParts')[part - 1] + page;
+            },
 
             checkBrowser: function(){
                 var isWebkit,
@@ -81,15 +90,6 @@ define(
                     }
                 }
                 this.set('isWebkit', isWebkit);
-            },
-            //endregion
-
-            //region Method
-            getPageById: function (id) {
-                var part = InfoModel.getPartById(id),
-                    page = Math.ceil((id - InfoModel.get('part')[part - 1]) / this.get('idPerPage') + 0.001);
-
-                return this.get('pageNumberOfParts')[part - 1] + page;
             },
 
             identifyBrowser: function (userAgent, elements) {

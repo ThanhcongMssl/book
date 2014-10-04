@@ -31,19 +31,23 @@ require.config({
         underscore: '../bower_components/lodash/dist/lodash',
         text: '../bower_components/requirejs-text/text',
         powerange: '../bower_components/powerange/dist/powerange.min',
+        hammerjs: '../bower_components/hammerjs/hammer.min',
         slimScroll: 'vendor/slimScroll/jquery.slimscroll.min'
     }
 });
 
 require(
-    ['jquery', './views/desktop/main', 'models/book', 'models/view'],
-    function ($, App, BookModel, ViewModel){
+    ['jquery', 'events', 'models/book', 'models/view', './views/desktop/main'],
+    function ($, Events, BookModel, ViewModel, App){
     var bookID = $('#bookID').val();
     BookModel.set({
         bookID: bookID
     });
     ViewModel.set({
         bookID: bookID
+    });
+    Events.config({
+        device: 'desktop'
     });
     return new App({
         el: '#app'
