@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/mobile/header/base.html', './toolbar/main', './bookmark/main'],
-    function($, _, Backbone, facade, Events, baseTemplate, ToolbarView, BookmarkView){
+    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/mobile/header/base.html', './toolbar/main'],
+    function($, _, Backbone, facade, Events, baseTemplate, ToolbarView){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -31,18 +31,20 @@ define (
             new ToolbarView({
                 el: this.$('.toolbar')
             });
-//            new BookmarkView({
-//                el: this.$('.bookmark')
-//            });
         },
 
         bindEvents : function(){
             Events.addListener('mouseenter', this.$el, this.handleHeaderHover, this);
+            Events.addListener('click', this.$('.menu-toggle'), this.handleMenuToggle, this);
         },
 
         //region Handle events
         handleHeaderHover: function () {
             facade.publish('Read:stop');
+        },
+
+        handleMenuToggle : function(){
+            facade.publish('Menu:toggle');
         }
         //endregion
     });

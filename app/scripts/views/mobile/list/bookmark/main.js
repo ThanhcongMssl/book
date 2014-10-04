@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/bookmark/base.html', 'models/user', 'events', 'slimScroll'],
-    function($, _, Backbone, facade, baseTemplate, UserModel, Events, slimScroll){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/list/bookmark/base.html', 'models/user', 'events'],
+    function($, _, Backbone, facade, baseTemplate, UserModel, Events){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -34,9 +34,7 @@ define (
         },
 
         initComponents : function(){
-            this.$('.slim-el').slimScroll({
-                height: 354
-            });
+
         },
 
         bindEvents: function () {
@@ -53,7 +51,7 @@ define (
                 ID: id
             });
 
-            facade.publish('Toolbar:close');
+            facade.publish('Menu:close');
         }
         //endregion
     });

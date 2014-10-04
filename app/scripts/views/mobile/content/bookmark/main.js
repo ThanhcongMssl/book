@@ -8,7 +8,7 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/header/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date'],
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/content/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date'],
     function($, _, Backbone, facade, baseTemplate, InfoModel, UserModel, Events, DateFormat){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
@@ -35,7 +35,6 @@ define (
 
         bindEvents: function () {
             Events.addListener('click', this.$el, this.handleBookmarkClick, this);
-            Events.addListener('mouseenter', this.$el, this.handleBookmarkHover, this);
         },
         //endregion
 
@@ -71,10 +70,6 @@ define (
                 this.$el.addClass('bookmarked');
             }
             facade.publish('Bookmark:change');
-        },
-
-        handleBookmarkHover: function (e) {
-            e.stopPropagation();
         }
         //endregion
     });

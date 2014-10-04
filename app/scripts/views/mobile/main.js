@@ -9,8 +9,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/base.html', './header/main', './footer/main', './content/main', 'models/book', 'models/user'],
-    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, BookModel, UserModel) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/base.html', './header/main', './footer/main', './content/main', './list/main', 'models/book', 'models/user'],
+    function ($, _, Backbone, facade, baseTemplate, Header, Footer, Content, List, BookModel, UserModel) {
 
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
@@ -28,11 +28,15 @@ define(
                 facade.subscribe('Read:toggle', 'toggle', this.toggleReadMode, this);
                 facade.subscribe('Font:change-color', 'change background color', this.changeBackgroundColor, this);
                 facade.subscribe('Layout:change', 'change layout', this.changeLayout, this);
+                facade.subscribe('Ajax:loading', 'show loading', this.showLoading, this);
+                facade.subscribe('Ajax:loaded', 'hide loading', this.hideLoading, this);
             },
 
             render: function(){
                 var template = this.template();
                 this.$el.html(template);
+
+                this.$el.addClass('read');
 
                 this.initComponents();
                 this.backUpUserModel();
@@ -49,6 +53,9 @@ define(
                 });
                 new Footer({
                     el: this.$('footer')
+                });
+                new List({
+                    el: this.$('#menu')
                 });
             },
 
@@ -72,6 +79,7 @@ define(
                     this.$el.removeClass('read');
                 } else {
                     this.$el.addClass('read');
+                    facade.publish('Toolbar:close');
                 }
             },
 
@@ -85,6 +93,14 @@ define(
                 var layout = options.layout;
                 this.$el.removeClass('one-page two-page');
                 this.$el.addClass(layout);
+            },
+
+            showLoading : function(){
+                this.$('#loading').removeClass('off');
+            },
+
+            hideLoading: function(){
+                this.$('#loading').addClass('off');
             }
             //endregion
         });

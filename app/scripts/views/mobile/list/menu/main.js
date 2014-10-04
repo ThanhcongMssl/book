@@ -8,8 +8,8 @@
 
 /*global define*/
 define(
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/menu/base.html', 'models/user', 'events', 'slimScroll'],
-    function ($, _, Backbone, facade, baseTemplate, UserModel, Events, slimScroll) {
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/list/menu/base.html', 'models/user', 'events'],
+    function ($, _, Backbone, facade, baseTemplate, UserModel, Events) {
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -33,21 +33,15 @@ define(
             },
 
             initComponents: function () {
-                this.$('.slim-el').slimScroll({
-                    height: 354
-                });
+
             },
 
             bindEvents: function () {
-                Events.addListener('click', this.$('.table-of-contents'), this.handleTableOfContentClick, this);
                 Events.addListener('click', this.$('.chapter-list-item'), this.handleChapterListItemClick, this);
             },
             //endregion
 
             //region Handle events
-            handleTableOfContentClick: function (e) {
-                e.stopPropagation();
-            },
 
             handleChapterListItemClick: function (e) {
                 var $currentTarget = this.$(e.currentTarget),
@@ -57,7 +51,7 @@ define(
                     ID: id
                 });
 
-                facade.publish('Toolbar:close');
+                facade.publish('Menu:close');
             }
             //endregion
         });

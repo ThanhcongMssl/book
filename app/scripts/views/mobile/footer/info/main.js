@@ -16,6 +16,7 @@ define (
 
         initialize : function(){
             facade.subscribe('Viewer:check-in', 'render', this.render, this);
+            facade.subscribe('Powerange:change', 'change value', this.changeReadedPercent, this);
         },
 
         //region Function
@@ -32,6 +33,12 @@ define (
 
         initComponents: function(){
 
+        },
+        //endregion
+
+        //region Method
+        changeReadedPercent: function(options){
+            this.$('.percent').text(options.percent);
         }
         //endregion
     });

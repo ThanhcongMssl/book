@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/content/base.html', './viewer/main', 'models/book', 'models/view', 'models/info', 'models/user', 'events'],
-    function($, _, Backbone, facade, baseTemplate, Viewer, BookModel, ViewModel, InfoModel, UserModel, Events){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/content/base.html', './viewer/main', './bookmark/main', 'models/book', 'models/view', 'models/info', 'models/user', 'events'],
+    function($, _, Backbone, facade, baseTemplate, Viewer, Bookmark, BookModel, ViewModel, InfoModel, UserModel, Events){
         var View = Backbone.View.extend({
             template: _.template(baseTemplate),
 
@@ -40,6 +40,10 @@ define (
             initComponents: function(){
                 new Viewer({
                     el: this.$('.viewer')
+                });
+
+                new Bookmark({
+                    el: this.$('.bookmark')
                 });
             },
             //endregion

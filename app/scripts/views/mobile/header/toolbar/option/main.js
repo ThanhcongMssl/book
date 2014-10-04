@@ -7,7 +7,7 @@
  */
 
 /*global define*/
-define (['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/base.html', './search/main', './highlight/main', './bookmark/main', './share/main', './library/main', 'events'],
+define (['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/toolbar/option/base.html', './search/main', './highlight/main', './../.././main', './share/main', './library/main', 'events'],
     function($, _, Backbone, facade, baseTemplate, SearchView, HighlightView, BookmarkView, ShareView, LibraryView, Events){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),

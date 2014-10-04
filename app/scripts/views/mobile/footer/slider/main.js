@@ -64,17 +64,18 @@ define (
 
         PowerangeCallback : function(){
             var $handle = this.$('.range-handle'),
-                $tooltip = this.$('.tooltip'),
                 left = $handle.css('left'),
-                value = this.$('.js-customized').val(),
-                id = Math.round(value * InfoModel.get('totalID') / 100);
-            left = parseInt(left) - $tooltip.outerWidth()/2 + $handle.outerWidth()/2;
-            this.$('.tooltip').css('left', left);
-            this.$('.percent').text(value + '%');
-
-            var chapter = InfoModel.getChapterById(id),
-                title = chapter ? chapter.title : InfoModel.get('title');
-            this.$('.title').text(title);
+                value = this.$('.js-customized').val();
+//            left = parseInt(left) - $tooltip.outerWidth()/2 + $handle.outerWidth()/2;
+//            this.$('.tooltip').css('left', left);
+//            this.$('.percent').text(value + '%');
+//
+//            var chapter = InfoModel.getChapterById(id),
+//                title = chapter ? chapter.title : InfoModel.get('title');
+//            this.$('.title').text(title);
+            facade.publish('Powerange:change', {
+                percent: value
+            });
         },
 
         changeSlider: function(options){

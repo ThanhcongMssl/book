@@ -22,6 +22,8 @@ body{
     -webkit-column-gap: 112px;
     -moz-column-gap: 112px;
     column-gap: 112px;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
 }
 
 div#app.one-page .container{
@@ -34,9 +36,15 @@ div#app.one-page .container{
 }
 
 div#app.two-page .container{
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
+    /*-webkit-column-count: 2;*/
+    /*-moz-column-count: 2;*/
+    /*column-count: 2;*/
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 1px;
+    -moz-column-width: 1px;
+    column-width: 1px;
 }
 
 .container .article{
@@ -81,7 +89,8 @@ div#app.two-page .container{
     cursor: default;
 }
 
-.list-book-mark p{
+
+.bookmark-list p{
     font-size: 16px;
     text-align: center;
     margin-top: 21px;

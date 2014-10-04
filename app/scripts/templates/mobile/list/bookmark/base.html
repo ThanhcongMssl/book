@@ -1,0 +1,20 @@
+<ul>
+    <%
+    var length = Model.bookmarks.length;
+    if(length == 0){
+    %>
+    <p>Không có đánh dấu trang nào.</p>
+    <%
+    } else {
+        for(var i = 0; i < length; i++){
+        var chapter = Model.bookmarks[i];
+    %>
+    <li class="bookmark-list-item" data-id="<%= chapter.id %>">
+        <div><span><%= chapter.title %></span><span><%= chapter.page %></span></div>
+        <span class="date"><%= chapter.date %></span>
+    </li>
+    <%
+        }
+    }
+    %>
+</ul>
