@@ -8,42 +8,76 @@
 
 /*global define, describe, it, spyOn*/
 define (
-    ['jquery', 'facade', 'views/desktop/content/main', 'views/desktop/content/viewer/main'],
-    function($, facade, Content, Viewer){
+    ['jquery', 'facade', 'models/info', 'models/user', 'models/view', 'views/desktop/content/main', 'views/desktop/content/viewer/main'],
+    function($, facade, InfoModel, UserModel, ViewModel, Content, Viewer){
     describe('Navigation spec', function(){
-        describe('Given the facade object and Content class', function(){
+        describe('Given the facade, InfoModel, UserModel, ViewModel object and Content class', function(){
+
+            InfoModel.set({
+                part: [0, 1000, 2200]
+            });
+
+            UserModel.set({
+                currentID: 1,
+                currentPart: 0
+            });
+
+            ViewModel.set({
+                idPerPage: 100,
+                column: 2
+            });
+
             describe('When create Content\'s instance', function(){
                 beforeEach(function(){
                     spyOn(Content.prototype,'handleNextButtonClick').and.callThrough();
                     spyOn(Content.prototype,'handlePrevButtonClick').and.callThrough();
 
-                    spyOn(facade,'publish');
+                    spyOn(facade,'publish').and.callThrough();
 
                     this.content = new Content();
                 });
 
                 it('Should be called handle function when next button click', function(){
+                    facade.publish.calls.reset();
+
                     this.content.$('.next').click();
 
                     expect(Content.prototype.handleNextButtonClick).toBeDefined();
                     expect(Content.prototype.handleNextButtonClick).toHaveBeenCalled();
 
                     expect(facade.publish).toHaveBeenCalled();
-                    expect(facade.publish.calls.mostRecent().args).toEqual(
+                    expect(facade.publish.calls.argsFor(0)).toEqual(
                         ['Navigation:change', jasmine.any(Object)]
                     );
                 });
 
                 it('Should be called handle function when prev button click', function(){
+                    facade.publish.calls.reset();
                     this.content.$('.prev').click();
 
                     expect(Content.prototype.handlePrevButtonClick).toBeDefined();
                     expect(Content.prototype.handlePrevButtonClick).toHaveBeenCalled();
 
                     expect(facade.publish).toHaveBeenCalled();
-                    expect(facade.publish.calls.mostRecent().args).toEqual(
+                    expect(facade.publish.calls.argsFor(0)).toEqual(
                         ['Navigation:change', jasmine.any(Object)]
                     );
+                });
+
+                it('Calculate right ID per page', function(){
+                    this.content.$('.content').height(1000);
+                    this.content.$('.article').height(10000);
+                });
+
+                it('Should request next part when current is end', function(){
+                    UserModel.set({
+                        currentID: 800
+                    });
+
+                    this.content.$('.next').click();
+
+                    expect(UserModel.get('currentID')).toEqual(1000);
+                    expect(UserModel.get('currentPart')).toEqual(1);
                 });
             });
         });

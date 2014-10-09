@@ -13,9 +13,11 @@
         <script src="../app/bower_components/requirejs/require.js"></script>
         <script src="require-config.js"></script>
         <script>
-            require(['spec/initialize', 'spec/navigation', 'spec/info-model', 'spec/view-model', 'spec/user-model', 'spec/text-tool'], function() {
-                var jasmineEnv = jasmine.getEnv();
-                jasmineEnv.execute();
+            require(['jquery', 'spec/user-model'], function($) {
+                $(document).ready(function(){
+                    var jasmineEnv = jasmine.getEnv();
+                    jasmineEnv.execute();
+                });
             });
         </script>
     </body>

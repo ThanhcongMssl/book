@@ -7,9 +7,39 @@
  */
 
 /*global define*/
-define (['facade', 'views/desktop/header/toolbar/text/main', 'views/desktop/content/viewer/main', 'views/desktop/content/main', 'views/desktop/main'], function(facade, TextTool, Viewer, Content, App){
+define (
+    ['facade', 'models/info', 'models/user', 'models/view', 'views/desktop/header/toolbar/text/main', 'views/desktop/content/viewer/main', 'views/desktop/content/main', 'views/desktop/main'],
+    function(facade, InfoModel, UserModel, ViewModel, TextTool, Viewer, Content, App){
     describe('Text tool spec', function(){
         describe('Given the facade object', function(){
+
+            InfoModel.set({
+                part: [0, 300, 500],
+                chapter: [
+                    {id: 0, title: 'lorem ipsum 1'},
+                    {id: 400, title: 'lorem ipsum 2'},
+                    {id: 450, title: 'lorem ipsum 3'}
+                ]
+            });
+
+            UserModel.set({
+                currentID: 1,
+                currentPart: 0,
+                fontFamily: 'Arial',
+                fontSize: 21,
+                layout: 'two-page',
+                backgroundColor: 'White',
+                bookmark: [
+                    {id: 30, title: 'lorem ipsum 1'},
+                    {id: 100, title: 'lorem ipsum 2'}
+                ]
+            });
+
+            ViewModel.set({
+                idPerPage: 30,
+                column: 2
+            });
+
             describe('Given TextTool, Viewer class', function(){
                 describe('When create new instance of TextTool, Viewer class', function(){
                     beforeEach(function(){

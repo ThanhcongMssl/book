@@ -14,6 +14,8 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
+            _.bindAll(this, 'handleImageLoaded');
+
             facade.subscribe('ViewModel:fetch-data-successed', 'render', this.render, this);
             facade.subscribe('Navigation:change', 'change view', this.changeView, this);
             facade.subscribe('Font:change-size', 'change font size', this.changeFontSize, this);
@@ -33,22 +35,29 @@ define (
         //region Function
         render: function(){
             var template = this.template({
-                HTML: ViewModel.get('HTML'),
-                layout: UserModel.get('layout')
+                HTML: ViewModel.get('HTML')
             });
             this.$el.html(template);
+            this.resizeImage();
+            this.bindImageLoadedEvents();
 
+            return this;
+        },
+
+        continueRender : function(){
             this.backUpUserModel();
             this.initComponents();
+            this.bindReferenceEvents();
             this.changeView({
                 ID: UserModel.get('currentID')
             });
+
+            facade.publish('Ajax:loaded');
 
             return this;
         },
 
         initComponents: function(){
-            this.resizeImage();
             ViewModel.set('idPerPage', this.calculateIdPerPage());
             ViewModel.set('pageNumberOfParts', this.calculatePageNumberOfParts());
             facade.publish('Viewer:resize');
@@ -62,6 +71,28 @@ define (
         backUpUserModel : function(){
             this.$el.css('font-size', UserModel.get('fontSize'));
             this.$el.css('font-family', UserModel.get('fontFamily'));
+        },
+
+        bindReferenceEvents : function(){
+            Events.addListener('click', this.$('.ref'), this.handleReferenceClick, this);
+        },
+
+        bindImageLoadedEvents: function(){
+            var images = this.$('img'),
+                length = images.length;
+
+            if (length == 0){
+                this.continueRender();
+            } else {
+                this.imageLoadedCouter = 0;
+                this.imageNumber = length;
+
+                for(var i = 0; i < length; i++){
+                    var img = images[i];
+                    img.id = i;
+                    img.onload = this.handleImageLoaded;
+                }
+            }
         },
         //endregion
 
@@ -79,15 +110,37 @@ define (
                 facade.publish('Read:toggle');
             }
         },
+
+        handleReferenceClick : function(e){
+            var $currentTarget = this.$(e.currentTarget),
+                href = $currentTarget.attr('href'),
+                refs = InfoModel.get('listAllReferences');
+
+            var ref = _.where(refs, {reference: href});
+            facade.publish('Navigation:change', {
+                ID: ref[0].id
+            });
+
+            return false;
+        },
+
+        handleImageLoaded : function(){
+            this.imageLoadedCouter++;
+            if (this.imageLoadedCouter == this.imageNumber){
+                this.continueRender();
+            }
+        },
         //endregion
 
         //region Method
         changeView : function(options){
             var id = options.ID,
-                part = InfoModel.getPartById(id);
+                part = InfoModel.getPartById(id),
+                idPerView = ViewModel.get('idPerPage') * ViewModel.get('column');
+            id = id - ((id - InfoModel.get('part')[part]) % idPerView);
             UserModel.set('currentID', id);
             if (part == UserModel.get('currentPart')){
-                var X = Math.floor((id - InfoModel.get('part')[part - 1]) / (ViewModel.get('idPerPage') * ViewModel.get('column')));
+                var X = Math.floor((id - InfoModel.get('part')[part]) / idPerView);
                 this.translate(X);
                 facade.publish('Viewer:check-in');
             } else {
@@ -132,7 +185,7 @@ define (
 
         translate: function(X){
             var $container = this.$('.container'),
-                translateX = -(this.$el.width() + parseInt($container.css('column-gap'))) * X;
+                translateX = -(this.$el[0].getBoundingClientRect().width + parseInt($container.css('column-gap'))) * X;
             $container.css({
                 "transform": "translate(" + translateX + "px,0px)",
                 "-ms-transform": "translate(" + translateX + "px,0px)",
@@ -158,15 +211,50 @@ define (
         },
 
         calculateIdPerPage : function(){
-            var viewerHeight = this.$el.height(),
-                articleHeight = this.$('.article').height(),
+            var $container = this.$('.container'),
+                $article = this.$('.article'),
+                column = $container.css('column-count'),
                 idInPart = InfoModel.getIdInPart(UserModel.get('currentPart'));
 
-            var column = this.$('.container').css('column-count');
             ViewModel.set('column', column);
-            viewerHeight *= column;
 
-            return Math.floor((viewerHeight / articleHeight) * idInPart);
+            var viewerHeight,
+                articleHeight;
+
+            if(ViewModel.get('isWebkit')){
+                viewerHeight = this.$el.height();
+                articleHeight = $article.height();
+
+                return Math.ceil(idInPart / (articleHeight / viewerHeight));
+            }
+            else{
+                var gap = parseInt($container.css('column-gap')),
+                    viewerWidth = this.$el.width() + gap,
+                    articleWidth = $article.width() + gap;
+
+                /*
+                 * Some error with Article width in one column case
+                 */
+                var pageNumber = Math.round(articleWidth / viewerWidth),
+                    pageWidth = (viewerWidth - (gap * column)) / column;
+
+                articleWidth = pageWidth * (pageNumber - 1) * column;
+
+                var part = UserModel.get('currentPart'),
+                    lastWord = InfoModel.get('part')[part] + idInPart - 1,
+                    viewerOffset = this.$el.offset(),
+                    containerOffset = this.$('.container').offset(),
+                    offset = this.$('#' + lastWord).offset();
+
+                var top = offset.top - containerOffset.top,
+                    left = ((offset.left + (viewerWidth * 1000)) % (viewerWidth)) - gap - viewerOffset.left;
+                viewerHeight = this.$el.height();
+                articleWidth += (top / viewerHeight) * pageWidth;
+                if (left >= viewerWidth){
+                    articleWidth += pageWidth;
+                }
+                return Math.ceil(idInPart / (articleWidth / pageWidth));
+            }
         },
 
         calculatePageNumberOfParts: function(){
@@ -175,7 +263,7 @@ define (
 
             var pageNumberOfParts = [0];
             for(var i = 0, length = parts.length - 1; i < length; i++){
-                var idInPart = InfoModel.getIdInPart(i + 1),
+                var idInPart = InfoModel.getIdInPart(i),
                     pageNumber = Math.ceil(idInPart/idPerPage);
                 pageNumberOfParts.push(pageNumberOfParts[i] + pageNumber);
             }

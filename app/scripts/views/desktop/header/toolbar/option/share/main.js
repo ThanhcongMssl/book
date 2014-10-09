@@ -14,9 +14,9 @@ define (
         template: _.template(baseTemplate),
 
         initialize : function(){
-            new LoginFilter(this, [
-                'share'
-            ]);
+//            new LoginFilter(this, [
+//                'share'
+//            ]);
 
             this.render();
         },

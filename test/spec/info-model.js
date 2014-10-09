@@ -16,6 +16,8 @@ define (['models/info'], function(InfoModel){
                     chapter: [{id: 30}, {id: 50}, {id: 70}]
                 });
 
+                console.log(InfoModel.get('chapter'));
+
                 it('Should be return right object when call getChapterById function', function(){
                     expect(InfoModel.getChapterById(4)).toEqual({id: 0, title: 'lorem ipsum'});
                 });
@@ -26,7 +28,7 @@ define (['models/info'], function(InfoModel){
                 });
 
                 it('Should be return right value when call getPartById function', function(){
-                    expect(InfoModel.getPartById(40)).toEqual(2);
+                    expect(InfoModel.getPartById(40)).toEqual(1);
                 });
                 it('Should be return right value when call getIdInPart function', function(){
                     expect(InfoModel.getIdInPart(2)).toEqual(20);

@@ -44,12 +44,12 @@ define (['backbone'], function(Backbone){
                 i++;
             }
 
-            return i;
+            return i - 1;
         },
 
         getIdInPart : function(number){
             var parts = this.get('part');
-            return parts[number] - parts[number - 1];
+            return parts[number + 1] - parts[number];
         }
         //endregion
     });

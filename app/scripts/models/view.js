@@ -23,16 +23,18 @@ define(
 
             //region Fetch
             fetchData: function (number, location) {
-                number = number || 1;
+                number = number || 0;
                 location = location || false;
                 facade.publish('Ajax:loading');
                 Backbone.ajax({
+//                    url: '/Book/GetBookPart',
                     url: '/data/' + number + '.html',
+//                    type: 'POST',
                     data: {
                         bookID: this.get('bookID'),
                         partNumber: number,
                         markedLocBySpan: location,
-                        startLocation: number
+                        startLocation: InfoModel.get('part')[number]
                     },
                     success: this.handleFetchDataSuccess
                 });
@@ -43,7 +45,7 @@ define(
                     HTML: response
                 });
                 facade.publish('ViewModel:fetch-data-successed');
-                facade.publish('Ajax:loaded');
+                //facade.publish('Ajax:loaded');
             },
 
             handleRequestPart: function (options) {
@@ -55,15 +57,20 @@ define(
             //region Method
             getPageById: function (id) {
                 var part = InfoModel.getPartById(id),
-                    page = Math.ceil((id - InfoModel.get('part')[part - 1]) / this.get('idPerPage') + 0.001);
+                    page = Math.ceil((id - InfoModel.get('part')[part]) / this.get('idPerPage') + 0.001);
 
-                return this.get('pageNumberOfParts')[part - 1] + page;
+                return this.get('pageNumberOfParts')[part] + page;
             },
 
             checkBrowser: function(){
                 var isWebkit,
                     browser = this.identifyBrowser(navigator.userAgent);
                 switch (browser) {
+                    case 'Safari':
+                    {
+                        isWebkit = true;
+                        break;
+                    }
                     case 'Chrome':
                     {
                         isWebkit = true;

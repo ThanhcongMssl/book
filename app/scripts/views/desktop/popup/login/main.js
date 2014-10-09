@@ -19,7 +19,7 @@ define (['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/p
         render : function(){
             var template = this.template({
                 Model: {
-
+                    url: document.URL
                 }
             });
             this.$el.html(template);

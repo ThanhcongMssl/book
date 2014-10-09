@@ -14,6 +14,7 @@ define (
 
     var Model = Backbone.Model.extend({
         //region Fetch data
+//        url: '/Book/GetBookMetadata',
         url: '/data/book.json',
 
         fetchData: function(){
@@ -21,7 +22,7 @@ define (
                 data: {
                     bookID: this.get('bookID')
                 },
-                //type: 'POST',
+//                type: 'POST',
                 processData: true,
                 success: this.handleFetchDataSuccess
             });

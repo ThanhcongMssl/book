@@ -795,6 +795,7 @@ header, section#content, footer {
     bottom: 0;
     z-index: 1000;
     display: block;
+    /*background: #fff;*/
 }
 
 .loading-overlay.off {

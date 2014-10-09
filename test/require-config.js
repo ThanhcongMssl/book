@@ -28,6 +28,7 @@ require.config({
         underscore: '../bower_components/lodash/dist/lodash',
         text: '../bower_components/requirejs-text/text',
         powerange: '../bower_components/powerange/dist/powerange.min',
+        hammerjs: '../bower_components/hammerjs/hammer.min',
         slimScroll: 'vendor/slimScroll/jquery.slimscroll.min',
         facade: 'aura/facade',
         mediator: 'aura/mediator',

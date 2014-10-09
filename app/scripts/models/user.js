@@ -82,7 +82,7 @@ define (['backbone', './info', './view', 'utility/date'], function(Backbone, Inf
                 column = ViewModel.get('column'),
                 totalId = InfoModel.get('totalID'),
                 part = InfoModel.getPartById(id),
-                idOfPart = InfoModel.get('part')[part - 1];
+                idOfPart = InfoModel.get('part')[part];
 
             id = id - idOfPart;
 
