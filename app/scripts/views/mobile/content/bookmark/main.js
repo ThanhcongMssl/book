@@ -8,13 +8,19 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/content/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date'],
-    function($, _, Backbone, facade, baseTemplate, InfoModel, UserModel, Events, DateFormat){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/mobile/content/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date', 'utility/login-filter', 'models/book'],
+    function($, _, Backbone, facade, baseTemplate, InfoModel, UserModel, Events, DateFormat, LoginFilter, BookModel){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
         initialize : function(){
             facade.subscribe('Viewer:check-in', 'check bookmark', this.checkBookmark, this);
+            facade.subscribe('Popup:login-render', 'alert', this.confirmLogin, this);
+
+            new LoginFilter(this, [
+                'handleBookmarkClick'
+            ]);
+
             this.render();
         },
 
@@ -44,6 +50,13 @@ define (
                 this.$el.addClass('bookmarked');
             } else {
                 this.$el.removeClass('bookmarked');
+            }
+        },
+
+        confirmLogin: function() {
+            var result = confirm('Bạn có muốn đăng nhập để đánh dấu không?');
+            if (result) {
+                location.href = '/Account/Signin?returnurl=' + BookModel.get('bookLink');
             }
         },
         //endregion

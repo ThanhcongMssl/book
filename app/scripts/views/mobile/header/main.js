@@ -8,8 +8,8 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/mobile/header/base.html', './toolbar/main'],
-    function($, _, Backbone, facade, Events, baseTemplate, ToolbarView){
+    ['jquery', 'underscore', 'backbone', 'facade', 'events', 'text!templates/mobile/header/base.html', './toolbar/main', 'models/book'],
+    function($, _, Backbone, facade, Events, baseTemplate, ToolbarView, BookModel){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
@@ -18,7 +18,11 @@ define (
         },
 
         render: function(){
-            var template = this.template();
+            var template = this.template({
+                Model: {
+                    bookLink: BookModel.get('bookLink')
+                }
+            });
             this.$el.html(template);
 
             this.initComponents();

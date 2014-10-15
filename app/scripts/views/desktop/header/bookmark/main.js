@@ -8,13 +8,18 @@
 
 /*global define*/
 define (
-    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date'],
-    function($, _, Backbone, facade, baseTemplate, InfoModel, UserModel, Events, DateFormat){
+    ['jquery', 'underscore', 'backbone', 'facade', 'text!templates/desktop/header/bookmark/base.html', 'models/info', 'models/user', 'events', 'utility/date', 'utility/login-filter'],
+    function($, _, Backbone, facade, baseTemplate, InfoModel, UserModel, Events, DateFormat, LoginFilter){
     var View = Backbone.View.extend({
         template: _.template(baseTemplate),
 
         initialize : function(){
             facade.subscribe('Viewer:check-in', 'check bookmark', this.checkBookmark, this);
+
+            new LoginFilter(this, [
+                'handleBookmarkClick'
+            ]);
+
             this.render();
         },
 
